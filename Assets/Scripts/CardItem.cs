@@ -17,8 +17,20 @@ public class CardItem : MonoBehaviour
 
     [SerializeField] List<Image> diceSideimages = new List<Image>(6);
 
+    [Header("Data")]
+    [SerializeField] BaseItem item;
+
     public void Start()
     {
+        if (!item) Debug.LogWarning("No Base item was assigned");
+        UpdateCardData();
+    }
 
+    public void UpdateCardData()
+    {
+        cardTitle.text = item.itemName;
+        cardDescription.text = item.textBox;
+        cardImage.sprite = item.image;
+        diceCounter.text = "X" + item.diceCount.ToString();
     }
 }
