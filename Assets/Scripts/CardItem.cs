@@ -15,15 +15,16 @@ public class CardItem : MonoBehaviour
     [SerializeField] Image cardImage;
     [SerializeField] Image diceCount;
 
-    [SerializeField] List<Image> diceSideimages = new List<Image>(6);
+    [SerializeField] List<RawImage> diceSideimages = new List<RawImage>(6);
 
     [Header("Data")]
     [SerializeField] BaseItem item;
+    [SerializeField] DiceSideDatabase diceSideData;
 
     public void Start()
     {
         if (!item) Debug.LogWarning("No Base item was assigned");
-        UpdateCardData();
+        else UpdateCardData();
     }
 
     public void UpdateCardData()
@@ -32,5 +33,10 @@ public class CardItem : MonoBehaviour
         cardDescription.text = item.textBox;
         cardImage.sprite = item.image;
         diceCounter.text = "X" + item.diceCount.ToString();
+
+        for (int i = 0; i < 6; i++)
+        {
+            diceSideimages[i].texture = diceSideData.GetTexture(item.diceSides[i]);
+        }
     }
 }
