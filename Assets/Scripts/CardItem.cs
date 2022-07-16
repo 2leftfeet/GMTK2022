@@ -11,6 +11,7 @@ public class CardItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI cardTitle;
     [SerializeField] TextMeshProUGUI cardDescription;
     [SerializeField] TextMeshProUGUI diceCounter;
+    public bool isRewardCard;
 
     [SerializeField] Image cardImage;
     [SerializeField] Image diceCount;
