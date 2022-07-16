@@ -6,7 +6,9 @@ public class CardPosition : MonoBehaviour
 {
     public Vector3 positionInCardHolder;
     public Quaternion primaryRotation;
+
     public bool isSelected = false;
+    public bool isMovable = true;
 
     public CardSlot currentSlot;
     public CardSlot oldSlot;

@@ -27,9 +27,12 @@ public class CardControl : MonoBehaviour
                 CardItem hitCard = hit.collider.GetComponent<CardItem>();
                 if (hitCard)
                 {
-                    controlledCard = hitCard;
-                    controlledCard.GetComponent<CardPosition>().isSelected = true;
-                    controlledCard.GetComponent<CardPosition>().currentSlot.isEmpty = true;
+                    if (hitCard.GetComponent<CardPosition>().isMovable)
+                    {
+                        controlledCard = hitCard;
+                        controlledCard.GetComponent<CardPosition>().isSelected = true;
+                        controlledCard.GetComponent<CardPosition>().currentSlot.isEmpty = true;
+                    }
                 }
             }
         }

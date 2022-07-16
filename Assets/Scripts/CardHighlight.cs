@@ -18,23 +18,29 @@ public class CardHighlight : MonoBehaviour
 
     bool isSelected;
 
+    CardPosition cardPosition;
+
     private void Start()
     {
         oldScale = transform.localScale;
         child = gameObject.transform.GetChild(0).transform;
+        cardPosition = GetComponent<CardPosition>();
         oldPostion = Vector3.zero;
     }
 
     private void OnMouseEnter()
     {
-        newScale = new Vector3(transform.localScale.x + ammountToScale, transform.localScale.y + ammountToScale, transform.localScale.z + ammountToScale);
-        newPosition = new Vector3(child.localPosition.x - ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
-        isSelected = true;
+        if (cardPosition.isMovable)
+        {
+            newScale = new Vector3(transform.localScale.x + ammountToScale, transform.localScale.y + ammountToScale, transform.localScale.z + ammountToScale);
+            newPosition = new Vector3(child.localPosition.x - ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
+            isSelected = true;
+        }
     }
 
     private void OnMouseExit()
     {
-        isSelected = false;       
+        if (cardPosition.isMovable)  isSelected = false;       
     }
 
     private void Update()

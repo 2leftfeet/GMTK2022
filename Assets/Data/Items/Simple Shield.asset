@@ -28,5 +28,5 @@ MonoBehaviour:
     value: 2
   diceCount: 4
   image: {fileID: 0}
-  textBox: 
+  textBox: Does not shield you from emotional damage
   executionOrder: 0

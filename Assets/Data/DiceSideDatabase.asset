@@ -14,45 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
   - material: {fileID: 2100000, guid: 8f0760cbbfe8403479df9d6dd20ef31c, type: 2}
-    texture: {fileID: 2800000, guid: 29fa83695c2f20c45ab4f05ef47580b8, type: 3}
+    texture: {fileID: 2800000, guid: 3ec2d2908f9763645838da614fce015e, type: 3}
   - material: {fileID: 2100000, guid: 8767eb8666f35434893d70957cc2b06b, type: 2}
-    texture: {fileID: 2800000, guid: f6d337db58f0e624c830be5ecafd2b05, type: 3}
+    texture: {fileID: 2800000, guid: 5c28207dcfd42cd47b47fdbee7d1fecf, type: 3}
   - material: {fileID: 2100000, guid: 33613c594dbb3b246ad1f19e1ebf3664, type: 2}
-    texture: {fileID: 2800000, guid: 69ccb2b8e1519524281a60d34d6d30a9, type: 3}
+    texture: {fileID: 2800000, guid: 1ae9784407ad5f0499fb60db530d8a04, type: 3}
   - material: {fileID: 2100000, guid: aebec0edd73aa714394e6a8dd2a0c41b, type: 2}
-    texture: {fileID: 2800000, guid: ec27fcff7f8f7b44c9fb107bb94835b1, type: 3}
+    texture: {fileID: 2800000, guid: f0338abf6d05a444b98fb50433d20b4f, type: 3}
   damageMultiplier:
   - material: {fileID: 2100000, guid: bb0d825a1900ec0498c63a208e1ed17c, type: 2}
-    texture: {fileID: 2800000, guid: a4dc97bf99850e04cb8eb1571d774618, type: 3}
+    texture: {fileID: 2800000, guid: 876bcf85b8087ea40ad11f2f1ca24c4b, type: 3}
   - material: {fileID: 2100000, guid: 8f0760cbbfe8403479df9d6dd20ef31c, type: 2}
-    texture: {fileID: 2800000, guid: 29fa83695c2f20c45ab4f05ef47580b8, type: 3}
+    texture: {fileID: 2800000, guid: 3ec2d2908f9763645838da614fce015e, type: 3}
   - material: {fileID: 2100000, guid: a5d858c648f664442b8da852d260b656, type: 2}
-    texture: {fileID: 2800000, guid: e9117e6c5c44f03429d065f75cbffad0, type: 3}
+    texture: {fileID: 2800000, guid: 57ba419cc4939c2469281e5348d84d31, type: 3}
   shield:
   - material: {fileID: 2100000, guid: 2d7325a954759ed4bb9dfa30722d3d6d, type: 2}
-    texture: {fileID: 2800000, guid: 09d9ef33c62115a45bd74b3b7f67e446, type: 3}
+    texture: {fileID: 2800000, guid: 4fc9cd503e6bfe649b0c9c937cd24397, type: 3}
   - material: {fileID: 2100000, guid: 28fbc15e2f6e6be40bc7b1c4deb4a9b7, type: 2}
-    texture: {fileID: 2800000, guid: 4a0af99b18e2e8749a5c531707e6a2ca, type: 3}
+    texture: {fileID: 2800000, guid: 1156f65924c75904a9f8e7f0134cf147, type: 3}
   - material: {fileID: 2100000, guid: 6fad1d43a61f2b445ae6c868794af2cd, type: 2}
-    texture: {fileID: 2800000, guid: da33460ac45f34946984459d282d9eec, type: 3}
+    texture: {fileID: 2800000, guid: eb42e2483342e9b4d917049be36103c2, type: 3}
   - material: {fileID: 2100000, guid: 4bb73d7b9c9442b4c89f12658e5188cc, type: 2}
-    texture: {fileID: 2800000, guid: 669ac1e63db3c2349a31f9e599d2fb9f, type: 3}
+    texture: {fileID: 2800000, guid: be3ea4cb9d746fb4abfca346ff41b73f, type: 3}
   shieldMultiplier:
   - material: {fileID: 2100000, guid: 756053e28d9eb974e8b89115b02ca8f3, type: 2}
-    texture: {fileID: 2800000, guid: 71e4b548b56ad8044b8e9ed43a829b50, type: 3}
+    texture: {fileID: 2800000, guid: 7ca0208432074874a8107e66348d6c81, type: 3}
   - material: {fileID: 2100000, guid: 2d7325a954759ed4bb9dfa30722d3d6d, type: 2}
-    texture: {fileID: 2800000, guid: 09d9ef33c62115a45bd74b3b7f67e446, type: 3}
+    texture: {fileID: 2800000, guid: 4fc9cd503e6bfe649b0c9c937cd24397, type: 3}
   - material: {fileID: 2100000, guid: 33958051489bb724ca20faee7a2e10e7, type: 2}
-    texture: {fileID: 2800000, guid: f2b46bc6b35f8374c814503c2ddc2c91, type: 3}
+    texture: {fileID: 2800000, guid: b57f22376c9994e44a35576f890b1180, type: 3}
   heal:
   - material: {fileID: 2100000, guid: 292cb2fe9c6aae5448e9e1a611036a1a, type: 2}
-    texture: {fileID: 2800000, guid: 50fc3700be8376442bba50ca38205444, type: 3}
+    texture: {fileID: 2800000, guid: de5dbafe9e6facd4da8850c233f0fe08, type: 3}
   - material: {fileID: 2100000, guid: ff9323b8a425d2645b9f4a5f5cd27a3e, type: 2}
-    texture: {fileID: 2800000, guid: fa886e9d955387443b11d67459dc3d7b, type: 3}
+    texture: {fileID: 2800000, guid: 8d480f8090360794a89af468806621d5, type: 3}
   - material: {fileID: 2100000, guid: 8b8ea8e2233b3464cb54e4c5adbd0e9f, type: 2}
-    texture: {fileID: 2800000, guid: b45b6e339eee81046bdddb5fbe87596c, type: 3}
+    texture: {fileID: 2800000, guid: 16affd5cedeefac489eaa7213875016a, type: 3}
   - material: {fileID: 2100000, guid: 8b8ea8e2233b3464cb54e4c5adbd0e9f, type: 2}
-    texture: {fileID: 2800000, guid: 03fb4a55e65025f48a095a0473695e9d, type: 3}
+    texture: {fileID: 2800000, guid: 69500d9de87d28b4799dc8d2c60aae7e, type: 3}
   weakness:
     material: {fileID: 2100000, guid: 65c30ba89d3fc6d41be9f2b9d7321d1e, type: 2}
-    texture: {fileID: 2800000, guid: 9d79cced687d1c040afebde41b4cfa71, type: 3}
+    texture: {fileID: 2800000, guid: b07a1473bbaea0449a43629d3ae46cef, type: 3}
