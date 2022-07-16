@@ -6,6 +6,8 @@ public class Renderline : MonoBehaviour
 {
     private LineRenderer line;
     public GameObject targetPoint;
+
+    [SerializeField] float middlePointY = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,19 +15,23 @@ public class Renderline : MonoBehaviour
         line.useWorldSpace = true;
     }
 
-    [ContextMenu("Re-draw")]
     void UpdateLines(Vector3 target)
     {
         Reset();
-        line.positionCount = 2;
+        line.positionCount = 3;
         line.SetPosition(0, transform.position);
-        line.SetPosition(1, target);
+        var middlePoint = transform.position + (target - transform.position) / 2;
+        middlePoint += Vector3.up * middlePointY;
+        line.SetPosition(1, middlePoint);
+        line.SetPosition(2, target);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // in the start enough. not need to do it un the update to just draw the line
+        if (Input.GetKeyDown("r"))
+        {
+            UpdateLines(targetPoint.transform.position);
+        }
     }
     public void Reset()
     {

@@ -17,6 +17,7 @@ public class CardHighlight : MonoBehaviour
     Vector3 oldPostion;
 
     bool isSelected;
+    public bool isEnemy;
 
     CardPosition cardPosition;
 
@@ -26,28 +27,27 @@ public class CardHighlight : MonoBehaviour
         child = gameObject.transform.GetChild(0).transform;
         cardPosition = GetComponent<CardPosition>();
         oldPostion = Vector3.zero;
+        if (isEnemy) cardPosition.isMovable = false;
     }
 
     private void OnMouseEnter()
     {
-        if (cardPosition.isMovable)
-        {
             newScale = new Vector3(transform.localScale.x + ammountToScale, transform.localScale.y + ammountToScale, transform.localScale.z + ammountToScale);
-            newPosition = new Vector3(child.localPosition.x - ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
+            if (isEnemy) newPosition = new Vector3(child.localPosition.x + ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
+            else if (!isEnemy) newPosition = new Vector3(child.localPosition.x - ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
             isSelected = true;
-        }
     }
 
     private void OnMouseExit()
     {
-        if (cardPosition.isMovable)  isSelected = false;       
+        isSelected = false;       
     }
 
     private void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            isSelected = false;
+            if (!isEnemy) isSelected = false;
         }
         if (!isSelected)
         {
