@@ -31,8 +31,13 @@ public class SpawnEnemyState : BaseCombatState
             slot.AttachCard(spawnedCard);
 
             spawnedCard.item = enemyToSpawn.startingCards[i];
+            spawnedCard.owner = stateMachine.enemyAgent;
+
             spawnedCard.GetComponent<CardPosition>().isMovable = false;
             
         }
+
+        SelectCardsState selectCardsState = new SelectCardsState(stateMachine);
+        stateMachine.ChangeState(selectCardsState);
     }
 }
