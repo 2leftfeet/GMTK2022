@@ -60,7 +60,15 @@ public class CardPosition : MonoBehaviour
 
     public void AttachToHolderPosition(CardSlot slot, bool isBattleSlot, bool isRewardSlot)
     {
-        if (slot != currentSlot && !currentSlot.isBattleSlot && !currentSlot.isRewardSlot) oldSlot = currentSlot;
+        if (slot != currentSlot && !currentSlot.isBattleSlot && !currentSlot.isRewardSlot)
+        {
+            oldSlot = currentSlot;
+        }
+        else if (slot != currentSlot && !slot.isBattleSlot && !slot.isRewardSlot)
+        {
+            oldSlot.isEmpty = true;
+            oldSlot = currentSlot;
+        }
         if (isBattleSlot) oldSlot.isEmpty = false;
         currentSlot = slot;
     }
