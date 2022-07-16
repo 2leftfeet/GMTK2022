@@ -5,6 +5,7 @@ using UnityEngine;
 public class CombatAgent : MonoBehaviour
 {
     public int maxHealth = 50;
+    public int cardPlayedPerTurn = 2;
 
     int health = 50;
     int shield = 0;
