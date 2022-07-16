@@ -25,29 +25,36 @@ public class CombatManager : MonoBehaviour
     public CombatAgent player;
     public CombatAgent enemy;
 
-    public List<BaseItem> playerSelected;
-    public List<BaseItem> enemySelected;
+    public List<CardItem> playerSelected;
+    public List<CardItem> enemySelected;
 
-    public UnityEngine.UI.Text debugText;
+    public DiceGameObject dicePrototype;
+    public Collider diceSpawnBounds;
 
     RoundEffects playerEffects = new RoundEffects();
     RoundEffects enemyEffects = new RoundEffects();
 
-    void SelectItemPlayer(BaseItem item)
+
+    List<(CardItem, List<DiceGameObject>)> spawnedDiceByCard = new List<(CardItem, List<DiceGameObject>)>();
+
+    bool diceRolling = false;
+
+
+    void SelectItemPlayer(CardItem item)
     {
         if(playerSelected.Contains(item))
         {
-            Debug.LogError("Selected items already contain " + item.itemName);
+            Debug.LogError("Selected cards already contain " + item.name);
             return;
         }
         playerSelected.Add(item);
     }
 
-    void SelectItemEnemy(BaseItem item)
+    void SelectItemEnemy(CardItem item)
     {
         if(enemySelected.Contains(item))
         {
-            Debug.LogError("Selected items already contain " + item.itemName);
+            Debug.LogError("Selected cards already contain " + item.name);
             return;
         }
         enemySelected.Add(item);
@@ -55,24 +62,72 @@ public class CombatManager : MonoBehaviour
 
     void Update()
     {
-        debugText.text = $"player hp :{player.health}\nplayer shield :{player.shield}\nenemy hp: {enemy.health}\nenemy shield:{enemy.shield}";
+        if(diceRolling)
+        {
+            bool allSleeping = true;
+            foreach((CardItem, List<DiceGameObject>) cardDicePair in spawnedDiceByCard)
+            {
+                foreach(DiceGameObject dice in cardDicePair.Item2)
+                {
+                    if(!dice.GetComponent<Rigidbody>().IsSleeping())
+                    {
+                        allSleeping = false;
+                        break;
+                    }
+                }
+                if(!allSleeping) break;
+            }
+
+           if(allSleeping)
+           {
+                diceRolling = false;
+                QueryDice();
+           }
+        }
+
+    }
+
+    [ContextMenu("Spawn Dice")]
+    void SpawnDice()
+    {
+        foreach(CardItem card in playerSelected)
+        {
+            List<DiceGameObject> childDices = new List<DiceGameObject>();
+
+            int diceCount = card.item.diceCount;
+            for(int i = 0; i < diceCount; i++)
+            {
+                Vector3 randomPosition = RandomPointInBounds(diceSpawnBounds.bounds);
+                DiceGameObject spawnedDice = Instantiate(dicePrototype, randomPosition, Random.rotationUniform);
+                spawnedDice.parentCard = card;
+
+                spawnedDice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
+
+                childDices.Add(spawnedDice);
+            }
+
+            spawnedDiceByCard.Add((card, childDices));
+        }
+        diceRolling = true;
+
+    }
+
+    void QueryDice()
+    {
+        foreach((CardItem, List<DiceGameObject>) cardDicePair in spawnedDiceByCard)
+            {
+                foreach(DiceGameObject dice in cardDicePair.Item2)
+                {
+                    int rolledIndex = dice.GetSideUp();
+                    Debug.Log($"card {cardDicePair.Item1.name} of item {cardDicePair.Item1.item} rolled {cardDicePair.Item1.item.diceSides[rolledIndex].type}-{cardDicePair.Item1.item.diceSides[rolledIndex].value}");
+                }
+            }
     }
 
     [ContextMenu("Roll Dice")]
     void RollDice()
     {
-        foreach(BaseItem item in playerSelected)
-        {
-            item.UseItem(playerEffects);
-        }
-
-        foreach(BaseItem item in enemySelected)
-        {
-            item.UseItem(enemyEffects);
-        }
-
-        playerSelected.Clear();
-        enemySelected.Clear();
+        
     }   
 
     [ContextMenu("Apply Effects")]
@@ -92,5 +147,13 @@ public class CombatManager : MonoBehaviour
         playerEffects.Reset();
         enemyEffects.Reset();
     }
+
+    public  Vector3 RandomPointInBounds(Bounds bounds) {
+    return new Vector3(
+        Random.Range(bounds.min.x, bounds.max.x),
+        Random.Range(bounds.min.y, bounds.max.y),
+        Random.Range(bounds.min.z, bounds.max.z)
+    );
+}
 
 }
