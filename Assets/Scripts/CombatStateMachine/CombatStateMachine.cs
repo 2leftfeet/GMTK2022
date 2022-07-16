@@ -7,6 +7,12 @@ public class CombatStateMachine : MonoBehaviour
 {
     BaseCombatState currentState;
 
+
+    public CombatAgentData TEMP_enemyToSpawn;
+
+    public CardSlot[] playerCardSlots;
+    public CardSlot[] enemyCardSlots;
+
     public CardSlot[] combatSelectSlots;
 
     public CombatAgent enemyAgent;
@@ -16,6 +22,7 @@ public class CombatStateMachine : MonoBehaviour
 
     public Collider playerDiceSpawnBounds;
     public DiceGameObject dicePrototype;
+    public CardItem cardPrototype;
 
     public Transform attackDiceGroupPoint;
     public Transform defenseDiceGroupPoint;
@@ -24,6 +31,7 @@ public class CombatStateMachine : MonoBehaviour
     public float diceGroupOffset;
 
     public List<CardItem> activeCards = new List<CardItem>();
+
 
     void Start()
     {
@@ -65,7 +73,7 @@ public class CombatStateMachine : MonoBehaviour
 
     protected virtual BaseCombatState GetInitialState()
     {
-        return new SelectCardsState(this);
+        return new SpawnEnemyState(this);
     }
 
     private void OnGUI()
@@ -77,6 +85,11 @@ public class CombatStateMachine : MonoBehaviour
     public DiceGameObject SpawnDice(Vector3 position, Quaternion rotation)
     {
         return Instantiate(dicePrototype, position, rotation);
+    }
+
+    public CardItem SpawnCard(Vector3 position, Quaternion rotation)
+    {
+        return Instantiate(cardPrototype, position, rotation);
     }
 
     public  Vector3 RandomPointInBounds(Bounds bounds) {
