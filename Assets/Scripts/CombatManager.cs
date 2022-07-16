@@ -197,7 +197,7 @@ public class CombatManager : MonoBehaviour
     [ContextMenu("Apply Effects")]
     void ApplyEffects()
     {
-        player.health -= enemyEffects.totalDamage * enemyEffects.totalDamageMultiplier;
+        /*player.health -= enemyEffects.totalDamage * enemyEffects.totalDamageMultiplier;
         player.health += playerEffects.healthToHeal;
 
         player.shield += playerEffects.totalShield * playerEffects.totalShieldMultiplier;
@@ -206,7 +206,7 @@ public class CombatManager : MonoBehaviour
         enemy.health -= playerEffects.totalDamage * playerEffects.totalDamageMultiplier;
         enemy.health += enemyEffects.healthToHeal;
         
-        enemy.shield += enemyEffects.totalShield * enemyEffects.totalShieldMultiplier;
+        enemy.shield += enemyEffects.totalShield * enemyEffects.totalShieldMultiplier;*/
 
         playerEffects.Reset();
         enemyEffects.Reset();
