@@ -48,7 +48,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Health_Amount: 25.3
+    - _Health_Amount: 24.6
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
