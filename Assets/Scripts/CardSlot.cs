@@ -50,11 +50,9 @@ public class CardSlot : MonoBehaviour
         int layer_mask = LayerMask.GetMask("Card");
         if (Physics.Raycast(transform.position, Vector3.up, out hit, Mathf.Infinity, layer_mask))
         {
-            Debug.Log("Hit");
             CardItem cardItem = hit.collider.GetComponent<CardItem>();
             if (cardItem)
             {
-                Debug.Log("Hit Card Item");
                 cardPosition = cardItem.GetComponent<CardPosition>();
                 cardPosition.cardItem = cardItem;
                 CardSlot thisCardSlot = this.gameObject.GetComponent<CardSlot>();
