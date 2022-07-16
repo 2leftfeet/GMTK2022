@@ -559,7 +559,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.07781601, y: 0.11268998, z: -0.16020967, w: -0.009210626}
+  m_margin: {x: -0.13324735, y: 0.11268998, z: -0.16020967, w: -0.009210626}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -754,7 +754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -34.32, y: 83.1}
+  m_AnchoredPosition: {x: -34.32, y: 83.100006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &4353634605866323890
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 0.01
+  m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -989,7 +989,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8476630864923946747}
-  m_LocalRotation: {x: -0.7071073, y: -0, z: -0, w: 0.70710635}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.1889999, y: 1.718, z: 1.433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1055,6 +1055,7 @@ MonoBehaviour:
   positionInCardHolder: {x: 0, y: 0, z: 0}
   primaryRotation: {x: 0, y: 0, z: 0, w: 0}
   isSelected: 0
+  isMovable: 1
   currentSlot: {fileID: 0}
   oldSlot: {fileID: 0}
   cardItem: {fileID: 0}
@@ -1073,6 +1074,7 @@ MonoBehaviour:
   ammountToScale: 0.5
   ammountToMoveYAxis: 0.3
   duration: 20
+  isEnemy: 0
 --- !u!1 &8675670992119232845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1106,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1911025245405873797}
+  - {fileID: 2997017482326677150}
   m_Father: {fileID: 8476630864923946746}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 90}
@@ -1192,8 +1195,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.6, y: -6.07}
-  m_SizeDelta: {x: 52.79, y: 11.87}
+  m_AnchoredPosition: {x: 4.994, y: -2.019}
+  m_SizeDelta: {x: 48.418, y: 10.672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7606954746497201508
 CanvasRenderer:
@@ -1251,8 +1254,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.8
-  m_fontSizeBase: 6.8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1293,3 +1296,78 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &1153391189
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8675670992119232844}
+    m_Modifications:
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.027
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0000025709571
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0000004636163
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00000005960463
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998687073091636761, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: m_Name
+      value: Card Select Effect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce05ad76a5941764e992b1c8e7905980, type: 3}
+--- !u!4 &2997017482326677150 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2997017481308589259, guid: ce05ad76a5941764e992b1c8e7905980,
+    type: 3}
+  m_PrefabInstance: {fileID: 1153391189}
+  m_PrefabAsset: {fileID: 0}
