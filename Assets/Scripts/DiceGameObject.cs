@@ -83,8 +83,8 @@ public class DiceGameObject : MonoBehaviour
     {
         if(isMovingToOverview)
         {
-            transform.position = Vector3.Lerp(transform.position, targetOverviewPosition, Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetOverviewRotation, Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetOverviewPosition, 3f * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetOverviewRotation, 3f * Time.deltaTime);
         }
     }
 

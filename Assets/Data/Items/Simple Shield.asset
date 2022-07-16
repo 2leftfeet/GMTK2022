@@ -26,6 +26,7 @@ MonoBehaviour:
     value: 0
   - type: 3
     value: 2
-  diceCount: 1
+  diceCount: 4
   image: {fileID: 0}
   textBox: 
+  executionOrder: 0

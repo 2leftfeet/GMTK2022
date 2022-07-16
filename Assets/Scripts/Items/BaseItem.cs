@@ -13,6 +13,8 @@ public class BaseItem : ScriptableObject
 
     public string textBox;
 
+    public int executionOrder = 0;
+
     void OnValidate()
     {
         if(diceSides.Count != 6)
@@ -21,35 +23,30 @@ public class BaseItem : ScriptableObject
         }
     }
 
-    public virtual void UseItem(RoundEffects effects)
+    public virtual void ResolveItem(ref RoundEffects effects, List<DiceGameObject> diceList)
     {
-        
         for(int i = 0; i < diceCount; i++)
         {
-            //choose random side
-            int randomSideIndex = Random.Range(0, 6);
-            DiceSide randomSide = diceSides[randomSideIndex];
+            DiceSide rolledSide = diceSides[diceList[i].GetSideUp()];
 
-            Debug.Log("Item " + itemName + " rolled " + randomSide.type + " " + randomSide.value);
-
-            switch(randomSide.type)
+            switch(rolledSide.type)
             {
                 case SideType.Damage:
-                    effects.totalDamage += randomSide.value;
+                    effects.totalDamage += rolledSide.value;
                     break;
                 case SideType.DamageMultiplier:
-                    effects.totalDamageMultiplier *= randomSide.value;
+                    effects.totalDamageMultiplier *= rolledSide.value;
                     break;
                 case SideType.Shield:
-                    effects.totalShield += randomSide.value;
+                    effects.totalShield += rolledSide.value;
                     break;
                 case SideType.ShieldMultiplier:
-                    effects.totalShieldMultiplier *= randomSide.value;
+                    effects.totalShieldMultiplier *= rolledSide.value;
                     break;
                 case SideType.Healing:
-                    effects.healthToHeal += randomSide.value;
+                    effects.healthToHeal += rolledSide.value;
                     break;
             }
         }
-    } 
+    }
 }
