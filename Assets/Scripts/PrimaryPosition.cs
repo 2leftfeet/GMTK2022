@@ -9,6 +9,7 @@ public class PrimaryPosition : MonoBehaviour
     public bool isSelected = false;
 
     public CardSlot currentSlot;
+    public CardSlot oldSlot;
 
     private void Awake()
     {
@@ -18,11 +19,17 @@ public class PrimaryPosition : MonoBehaviour
     private void Start()
     {
         CheckHolder();
+        oldSlot = currentSlot;
     }
 
     private void Update()
     {
-        if (!isSelected) GoBack();
+        if (!isSelected) GoBackToCurrentSlot();
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            GoBackToOldSlot();
+        }
     }
 
     public void ResetPrimaryPosition()
@@ -31,15 +38,27 @@ public class PrimaryPosition : MonoBehaviour
         primaryRotation = transform.rotation;
     }
 
-    public void GoBack()
+    public void GoBackToCurrentSlot()
     {
         transform.position = Vector3.Slerp(transform.position, currentSlot.primaryPosition, 10f * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, primaryRotation, 10f * Time.deltaTime);
         currentSlot.isEmpty = false;
     }
 
-    public void AttachToHolder(CardSlot slot)
+    [ContextMenu("Return to Slot")]
+    public void GoBackToOldSlot()
     {
+        if(currentSlot.isBattleSlot)
+        {
+            currentSlot.isEmpty = true;
+            currentSlot = oldSlot;
+        }
+    }
+
+    public void AttachToHolder(CardSlot slot, bool isBattleSlot)
+    {
+        if (slot != currentSlot && !currentSlot.isBattleSlot) oldSlot = currentSlot;
+        if (isBattleSlot) oldSlot.isEmpty = false;
         currentSlot = slot;
     }
 

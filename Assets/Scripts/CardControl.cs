@@ -63,7 +63,13 @@ public class CardControl : MonoBehaviour
                 {
                     controlledCard.GetComponent<PrimaryPosition>().primaryPosition = hitCardSlot.primaryPosition;
                     hitCardSlot.AttachCard();
-                    controlledCard.GetComponent<PrimaryPosition>().AttachToHolder(hitCardSlot);
+                    controlledCard.GetComponent<PrimaryPosition>().AttachToHolder(hitCardSlot,hitCardSlot.isBattleSlot);
+                }
+                else if (controlledCard.GetComponent<PrimaryPosition>().oldSlot == hitCardSlot)
+                {
+                    controlledCard.GetComponent<PrimaryPosition>().primaryPosition = hitCardSlot.primaryPosition;
+                    hitCardSlot.AttachCard();
+                    controlledCard.GetComponent<PrimaryPosition>().AttachToHolder(hitCardSlot, hitCardSlot.isBattleSlot);
                 }
             }
         }

@@ -329,7 +329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255257427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.158, y: 0, z: 0}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 0
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &445093463
 GameObject:
@@ -441,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445093463}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.25}
+  m_LocalPosition: {x: -0.15799999, y: 0, z: -2.25}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -461,6 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 0
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &538285714
 GameObject:
@@ -793,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0239999
+      value: 0.86599994
       objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
@@ -972,7 +974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589561606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1060001, y: 1.503, z: 1.5084}
+  m_LocalPosition: {x: 1.4, y: 1.503, z: 1.5084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1115,6 +1117,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Parent (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 992241147651986764, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_RootOrder
@@ -1123,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0239999
+      value: 0.86599994
       objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
@@ -1824,6 +1831,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Parent (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 992241147651986764, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_RootOrder
@@ -1832,7 +1844,7 @@ PrefabInstance:
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0239999
+      value: 0.86599994
       objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
@@ -2162,7 +2174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220406476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: -0.15799999, y: 0, z: -3}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2245,6 +2257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 0
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1273966098
 GameObject:
@@ -2274,7 +2287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273966098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.166, y: 0, z: -1.2149999}
+  m_LocalPosition: {x: -1.387, y: 0, z: -1.2149999}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2294,6 +2307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 1
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1273966101
 BoxCollider:
@@ -2479,7 +2493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604206089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.077, y: 0, z: -0.122}
+  m_LocalPosition: {x: 0.3709999, y: 0, z: -0.122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2709,7 +2723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642789920}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5}
+  m_LocalPosition: {x: -0.15799999, y: 0, z: -1.5}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2729,6 +2743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 0
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &1666445714
 PrefabInstance:
@@ -2762,6 +2777,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Parent (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 992241147651986764, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_RootOrder
@@ -2770,7 +2790,7 @@ PrefabInstance:
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0239999
+      value: 0.86599994
       objectReference: {fileID: 0}
     - target: {fileID: 992241147651986765, guid: ede9db7bd9d96744c83a2c54a5c86cbb,
         type: 3}
@@ -3544,7 +3564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900676527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.75}
+  m_LocalPosition: {x: -0.15799999, y: 0, z: -0.75}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3564,6 +3584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 0
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1986428159
 GameObject:
@@ -3788,7 +3809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136865112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.166, y: 0, z: -2.215}
+  m_LocalPosition: {x: -1.417, y: 0, z: -2.215}
   m_LocalScale: {x: 0.82679635, y: 0.021882713, z: 0.67636573}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3808,6 +3829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEmpty: 1
+  isBattleSlot: 1
   primaryPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &2136865115
 BoxCollider:

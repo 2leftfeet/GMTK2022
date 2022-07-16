@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardSlot : MonoBehaviour
 {
     public bool isEmpty;
+    [SerializeField] public bool isBattleSlot;
 
 
     public Vector3 primaryPosition;
