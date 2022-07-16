@@ -11,6 +11,7 @@ public class CardItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI cardTitle;
     [SerializeField] TextMeshProUGUI cardDescription;
     [SerializeField] TextMeshProUGUI diceCounter;
+    public bool isRewardCard;
 
     [SerializeField] Image cardImage;
     [SerializeField] Image diceCount;
@@ -18,10 +19,8 @@ public class CardItem : MonoBehaviour
     [SerializeField] List<RawImage> diceSideimages = new List<RawImage>(6);
 
     [Header("Data")]
-    public BaseItem item;
+    [SerializeField] public BaseItem item;
     [SerializeField] DiceSideDatabase diceSideData;
-
-    [SerializeField] CardSlot currentSlot;
 
     public void Start()
     {

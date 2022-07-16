@@ -6,7 +6,6 @@ public class CardControl : MonoBehaviour
 {
     public Vector3 worldPosition;
     Plane plane = new Plane(Vector3.up, -2f);
-    bool isSelected;
     [SerializeField] float yValue = 5f;
 
     CardItem controlledCard;
@@ -29,13 +28,13 @@ public class CardControl : MonoBehaviour
                 if (hitCard)
                 {
                     controlledCard = hitCard;
-                    controlledCard.GetComponent<PrimaryPosition>().isSelected = true;
-                    controlledCard.GetComponent<PrimaryPosition>().currentSlot.isEmpty = true;
+                    controlledCard.GetComponent<CardPosition>().isSelected = true;
+                    controlledCard.GetComponent<CardPosition>().currentSlot.isEmpty = true;
                 }
             }
         }
 
-        if(controlledCard)
+        if (controlledCard)
         {
             controlledCard.transform.position = Vector3.Lerp(controlledCard.transform.position, worldPosition, 10f * Time.deltaTime);
             controlledCard.transform.LookAt(worldPosition + Vector3.up * yValue, -Vector3.forward);
@@ -43,28 +42,55 @@ public class CardControl : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            CheckforCardSlot();
-            if(controlledCard) controlledCard.GetComponent<PrimaryPosition>().isSelected = false;
+            CardPlacementLogic();
+            if (controlledCard) controlledCard.GetComponent<CardPosition>().isSelected = false;
             controlledCard = null;
         }
     }
 
-    void CheckforCardSlot()
+    public void DestroyCard(CardItem currentCard)
+    {
+        Destroy(currentCard.gameObject);
+    }
+
+    void CardPlacementLogic()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         int layer_mask = LayerMask.GetMask("CardHolder");
+
         if (controlledCard && Physics.Raycast(worldPosition, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layer_mask))
         {
             CardSlot hitCardSlot = hit.collider.GetComponent<CardSlot>();
             if (hitCardSlot)
             {
-                if (hitCardSlot.isEmpty)
+                CardItem cardItem = controlledCard.GetComponent<CardItem>();
+                CardPosition cardPosition = controlledCard.GetComponent<CardPosition>();
+                if (cardItem.isRewardCard)
                 {
-                    controlledCard.GetComponent<PrimaryPosition>().primaryPosition = hitCardSlot.primaryPosition;
-                    hitCardSlot.AttachCard();
-                    controlledCard.GetComponent<PrimaryPosition>().AttachToHolder(hitCardSlot);
+                    if (!hitCardSlot.isEmpty) DestroyCard(hitCardSlot.currentCard);
+                    hitCardSlot.AttachCard(controlledCard);
+                    cardPosition.positionInCardHolder = hitCardSlot.cardRestingPosition;
+                    cardPosition.AttachToHolderPosition(hitCardSlot, hitCardSlot.isBattleSlot, hitCardSlot.isRewardSlot);
+                    cardItem.isRewardCard = false;
                 }
+                else if (hitCardSlot.isEmpty && !hitCardSlot.isRewardSlot)
+                {
+                    cardPosition.positionInCardHolder = hitCardSlot.cardRestingPosition;
+                    hitCardSlot.AttachCard(controlledCard);
+                    cardPosition.AttachToHolderPosition(hitCardSlot, hitCardSlot.isBattleSlot, hitCardSlot.isRewardSlot);
+                }
+                if (hitCardSlot.isRewardSlot)
+                {
+                    return;
+                }
+                else if (cardPosition.oldSlot == hitCardSlot && !cardItem.isRewardCard)
+                {
+                    controlledCard.GetComponent<CardPosition>().positionInCardHolder = hitCardSlot.cardRestingPosition;
+                    hitCardSlot.AttachCard(controlledCard);
+                    controlledCard.GetComponent<CardPosition>().AttachToHolderPosition(hitCardSlot, hitCardSlot.isBattleSlot, hitCardSlot.isRewardSlot);
+                }
+
             }
         }
     }
