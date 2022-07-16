@@ -27,5 +27,6 @@ MonoBehaviour:
   - type: 1
     value: 0
   diceCount: 1
-  image: {fileID: 21300000, guid: 2eb4b024776699b46a86f87ce097b5f2, type: 3}
+  image: {fileID: 21300000, guid: ea6d881d8d644104db124461a2464a32, type: 3}
   textBox: Magic and Lensy
+  executionOrder: 0

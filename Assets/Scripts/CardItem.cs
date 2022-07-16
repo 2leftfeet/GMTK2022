@@ -22,6 +22,11 @@ public class CardItem : MonoBehaviour
     [SerializeField] public BaseItem item;
     [SerializeField] DiceSideDatabase diceSideData;
 
+    [HideInInspector]
+    public List<DiceGameObject> childDice;
+
+    public CombatAgent owner;
+
     public void Start()
     {
         if (!item) Debug.LogWarning("No Base item was assigned");

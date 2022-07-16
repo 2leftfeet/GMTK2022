@@ -9,6 +9,8 @@ public class CombatAgent : MonoBehaviour
     int health = 50;
     int shield = 0;
 
+    public int rerolls = 3;
+
     public List<BaseItem> inventory;
 
     void Start()
