@@ -35,9 +35,14 @@ public class CombatManager : MonoBehaviour
     RoundEffects enemyEffects = new RoundEffects();
 
 
-    List<(CardItem, List<DiceGameObject>)> spawnedDiceByCard = new List<(CardItem, List<DiceGameObject>)>();
+    List<DiceGameObject> diceList = new List<DiceGameObject>();
 
     bool diceRolling = false;
+
+    public Transform attackDiceLineStart;
+    public Transform defenseDiceLineStart;
+    public Transform uniqueDiceLineStart;
+    public float diceOverviewOffset = 0.3f;
 
 
     void SelectItemPlayer(CardItem item)
@@ -65,17 +70,14 @@ public class CombatManager : MonoBehaviour
         if(diceRolling)
         {
             bool allSleeping = true;
-            foreach((CardItem, List<DiceGameObject>) cardDicePair in spawnedDiceByCard)
+
+            foreach(DiceGameObject dice in diceList)
             {
-                foreach(DiceGameObject dice in cardDicePair.Item2)
+                if(!dice.GetComponent<Rigidbody>().IsSleeping())
                 {
-                    if(!dice.GetComponent<Rigidbody>().IsSleeping())
-                    {
-                        allSleeping = false;
-                        break;
-                    }
+                    allSleeping = false;
+                    break;
                 }
-                if(!allSleeping) break;
             }
 
            if(allSleeping)
@@ -85,6 +87,16 @@ public class CombatManager : MonoBehaviour
            }
         }
 
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            SpawnDice();
+        }
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            GroupDice();
+        }
+
     }
 
     [ContextMenu("Spawn Dice")]
@@ -92,7 +104,6 @@ public class CombatManager : MonoBehaviour
     {
         foreach(CardItem card in playerSelected)
         {
-            List<DiceGameObject> childDices = new List<DiceGameObject>();
 
             int diceCount = card.item.diceCount;
             for(int i = 0; i < diceCount; i++)
@@ -103,10 +114,8 @@ public class CombatManager : MonoBehaviour
 
                 spawnedDice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
 
-                childDices.Add(spawnedDice);
+                diceList.Add(spawnedDice);
             }
-
-            spawnedDiceByCard.Add((card, childDices));
         }
         diceRolling = true;
 
@@ -114,15 +123,70 @@ public class CombatManager : MonoBehaviour
 
     void QueryDice()
     {
-        foreach((CardItem, List<DiceGameObject>) cardDicePair in spawnedDiceByCard)
+        
+        foreach(DiceGameObject dice in diceList)
+        {
+            int rolledIndex = dice.GetSideUp();
+            Debug.Log($"card {dice.parentCard.name} of item {dice.parentCard.item} rolled {dice.parentCard.item.diceSides[rolledIndex].type}-{dice.parentCard.item.diceSides[rolledIndex].value}");
+        }
+            
+    }
+
+    [ContextMenu("Group Dice")]
+    void GroupDice()
+    {
+        Dictionary<SideType, List<DiceGameObject>> groupedDice = new Dictionary<SideType, List<DiceGameObject>>();
+        
+        foreach(DiceGameObject dice in diceList)
+        {
+            SideType diceType = dice.parentCard.item.diceSides[dice.GetSideUp()].type;
+
+            if(!groupedDice.ContainsKey(diceType))
             {
-                foreach(DiceGameObject dice in cardDicePair.Item2)
+                groupedDice.Add(diceType, new List<DiceGameObject>{dice});
+            }
+            else
+            {
+                groupedDice[diceType].Add(dice);
+            }
+        }
+
+        int attackCount = 0;
+        int defenseCount = 0;
+        int uniqueCount = 0;
+
+        foreach(var pair in groupedDice)
+        {
+            if(pair.Key == SideType.Damage || pair.Key == SideType.DamageMultiplier)
+            {
+                foreach(var dice in pair.Value)
                 {
-                    int rolledIndex = dice.GetSideUp();
-                    Debug.Log($"card {cardDicePair.Item1.name} of item {cardDicePair.Item1.item} rolled {cardDicePair.Item1.item.diceSides[rolledIndex].type}-{cardDicePair.Item1.item.diceSides[rolledIndex].value}");
+                    dice.MoveToOverview(attackDiceLineStart.position + Vector3.forward * diceOverviewOffset * attackCount);
+                    attackCount++;
                 }
             }
+            else if(pair.Key == SideType.Shield || pair.Key == SideType.ShieldMultiplier || pair.Key == SideType.Healing)
+            {
+                foreach(var dice in pair.Value)
+                {
+                    dice.MoveToOverview(defenseDiceLineStart.position + Vector3.forward * diceOverviewOffset * defenseCount);
+                    defenseCount++;
+                }
+            }
+            else
+            {
+                foreach(var dice in pair.Value)
+                {
+                    dice.MoveToOverview(uniqueDiceLineStart.position + Vector3.forward * diceOverviewOffset * uniqueCount);
+                    uniqueCount++;
+                }
+            }
+            }
     }
+        
+    
+
+
 
     [ContextMenu("Roll Dice")]
     void RollDice()

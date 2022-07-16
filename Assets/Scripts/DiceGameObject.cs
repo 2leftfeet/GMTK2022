@@ -12,6 +12,19 @@ using UnityEngine;
 //4 - left
 //5 - up
 
+
+public static class DiceRotations
+{
+    public static Quaternion[] rotations = {
+        Quaternion.Euler(-90f,0f,-90f),
+        Quaternion.Euler(0f,0f,180f),
+        Quaternion.Euler(0f, 180f, 90f),
+        Quaternion.Euler(90f, 0f, 90f),
+        Quaternion.Euler(0f, 90f, -90f),
+        Quaternion.Euler(0f, 90f, 0f)
+    };
+}
+
 public class DiceGameObject : MonoBehaviour
 {
     [SerializeField] DiceSideDatabase diceSideData;
@@ -19,9 +32,16 @@ public class DiceGameObject : MonoBehaviour
     public CardItem parentCard;
 
     MeshRenderer meshRenderer;
+    Rigidbody body;
+
+    bool isMovingToOverview = false;
+    Vector3 targetOverviewPosition;
+    Quaternion targetOverviewRotation;
 
     void Start()
     {
+        body = GetComponent<Rigidbody>();
+
         meshRenderer = GetComponent<MeshRenderer>();
         Material[] newMaterials = new Material[6];
 
@@ -48,6 +68,24 @@ public class DiceGameObject : MonoBehaviour
         int maxIndex = System.Array.IndexOf(dotProducts, maxDot);
 
         return maxIndex;
+    }
+
+    public void MoveToOverview(Vector3 position)
+    {
+        body.isKinematic = true;
+        isMovingToOverview = true;
+
+        targetOverviewPosition = position;
+        targetOverviewRotation = DiceRotations.rotations[GetSideUp()];
+    }
+
+    void Update()
+    {
+        if(isMovingToOverview)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetOverviewPosition, Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetOverviewRotation, Time.deltaTime);
+        }
     }
 
 }
