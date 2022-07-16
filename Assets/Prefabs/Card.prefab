@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2953de76ee85740499efd15765629df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedPosition: {fileID: 0}
+  primaryposition: {fileID: 0}
 --- !u!1 &4289843651928655576
 GameObject:
   m_ObjectHideFlags: 0

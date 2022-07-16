@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class CardSlot : MonoBehaviour
 {
-    public Transform cachedPosition;
+    public bool isEmpty;
 
-    private void OnEnable()
+
+    public Vector3 primaryPosition;
+    private void Awake()
     {
-        cachedPosition = transform;
+        ResetPrimaryPosition();
+    }
+
+    public void ResetPrimaryPosition()
+    {
+        primaryPosition = transform.position + (Vector3.up * 0.03f);
+    }
+    
+    public void AttachCard()
+    {
+        isEmpty = false;
+    }
+
+    public void RemoveCard()
+    {
+        isEmpty = true;
     }
 }

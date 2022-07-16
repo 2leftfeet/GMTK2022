@@ -21,6 +21,8 @@ public class CardItem : MonoBehaviour
     [SerializeField] BaseItem item;
     [SerializeField] DiceSideDatabase diceSideData;
 
+    [SerializeField] CardSlot currentSlot;
+
     public void Start()
     {
         if (!item) Debug.LogWarning("No Base item was assigned");
