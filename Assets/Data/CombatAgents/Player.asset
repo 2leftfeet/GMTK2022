@@ -15,8 +15,8 @@ MonoBehaviour:
   maxHealth: 10
   startingCards:
   - {fileID: 11400000, guid: 887174aadffbe2d44bde1f24ac14c8cd, type: 2}
-  - {fileID: 11400000, guid: 6908ee5a9f171634d99c8368eec60ae0, type: 2}
   - {fileID: 11400000, guid: 20d3684026831e14a8de4f03a21966b5, type: 2}
   - {fileID: 11400000, guid: 136c7a32e734e46d2ba7299dae33f882, type: 2}
+  - {fileID: 11400000, guid: 6908ee5a9f171634d99c8368eec60ae0, type: 2}
   isEnemy: 0
   cardsPlayedPerTurn: 2
