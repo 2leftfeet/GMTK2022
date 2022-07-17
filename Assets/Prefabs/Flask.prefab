@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 2382837986935870126}
   - component: {fileID: 8186672052466999051}
   - component: {fileID: 6144956826392072606}
+  - component: {fileID: 910088539}
   m_Layer: 0
   m_Name: Flask-Inner
   m_TagString: Untagged
@@ -502,6 +503,20 @@ MonoBehaviour:
   MaxWobble: 0.02
   WobbleSpeed: 0.5
   Recovery: 5
+--- !u!114 &910088539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320028073805079022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd145ddc5f455149b424ce624f6e3d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAmmount: {fileID: 6144956825947898767}
+  rend: {fileID: 8186672052466999051}
 --- !u!1 &6450892431523785933
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6450892431523785933}
-  m_LocalRotation: {x: -0.7071057, y: 0.7071079, z: 0.000002086266, w: 0.000002086272}
+  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: -0.223, y: 1.9660294, z: -2.407}
   m_LocalScale: {x: 3.9077039, y: 3.9077039, z: 3.907704}
   m_ConstrainProportionsScale: 0
