@@ -26,7 +26,7 @@ MonoBehaviour:
     value: 0
   - type: 0
     value: 0
-  diceCount: 1
+  diceCount: 2
   image: {fileID: 0}
   textBox: If you deal damage this turn, gain a reroll
   cooldown: 0
