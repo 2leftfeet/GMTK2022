@@ -64,7 +64,7 @@ public class DiceGroupState : BaseCombatState
                     attackCount++;
                 }
             }
-            else if(pair.Key == SideType.Shield || pair.Key == SideType.ShieldMultiplier || pair.Key == SideType.Healing)
+            else if(pair.Key == SideType.Shield || pair.Key == SideType.ShieldMultiplier)
             {
                 foreach(var dice in pair.Value)
                 {
@@ -72,7 +72,7 @@ public class DiceGroupState : BaseCombatState
                     defenseCount++;
                 }
             }
-            else
+            else if(pair.Key == SideType.Healing)
             {
                 foreach(var dice in pair.Value)
                 {

@@ -29,5 +29,5 @@ MonoBehaviour:
   diceCount: 1
   image: {fileID: 21300000, guid: 6306cc95460b9134f8c09bb656988ff3, type: 3}
   textBox: In this turn, your and the enemy's damage is nullified
-  cooldown: 0
+  cooldown: 14
   executionOrder: 0

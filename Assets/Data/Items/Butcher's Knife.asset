@@ -30,5 +30,5 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: cc46557cbafd15e4bb34137e3d2d4ab9, type: 3}
   textBox: In this turn, if you heal triple all your damage
   cooldown: 0
-  executionOrder: 0
-  damageMultiplierIfHealed: 2
+  executionOrder: 20
+  damageMultiplierIfHealed: 3

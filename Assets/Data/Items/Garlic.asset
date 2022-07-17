@@ -29,5 +29,5 @@ MonoBehaviour:
   diceCount: 1
   image: {fileID: 21300000, guid: 9b43caeb9ea871648b4ab4861a6066f9, type: 3}
   textBox: All your healing is converted to damage in this turn
-  cooldown: 0
-  executionOrder: 0
+  cooldown: 10
+  executionOrder: 16

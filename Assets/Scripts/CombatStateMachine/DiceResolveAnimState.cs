@@ -33,6 +33,17 @@ public class DiceResolveAnimState : BaseCombatState
                         dice.MoveToResolution(stateMachine.enemyShield.transform.position);
                     }
                 }
+                else if(diceType ==SideType.Healing)
+                {
+                    if(card.owner == stateMachine.playerAgent)
+                    {
+                        dice.MoveToResolution(stateMachine.playerHealthVial.transform.position);
+                    }
+                    else if(card.owner == stateMachine.enemyAgent)
+                    {
+                        dice.MoveToResolution(stateMachine.enemyHealthVial.transform.position);
+                    }
+                }
                 else
                 {
                     if(card.owner == stateMachine.playerAgent)
