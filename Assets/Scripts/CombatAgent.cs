@@ -47,4 +47,6 @@ public class CombatAgent : MonoBehaviour
     {
         shield += amount;      
     }
+
+    public int GetShield() { return shield;}
 }

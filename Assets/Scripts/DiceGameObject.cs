@@ -35,8 +35,11 @@ public class DiceGameObject : MonoBehaviour
     Rigidbody body;
 
     bool isMovingToOverview = false;
-    Vector3 targetOverviewPosition;
-    Quaternion targetOverviewRotation;
+    bool isMovingToResolution = false;
+    Vector3 targetPosition;
+    Quaternion targetRotation;
+    Vector3 angularSpeed;
+    Vector3 targetScale;
 
     void Start()
     {
@@ -74,17 +77,49 @@ public class DiceGameObject : MonoBehaviour
     {
         body.isKinematic = true;
         isMovingToOverview = true;
+        isMovingToResolution = false;
 
-        targetOverviewPosition = position;
-        targetOverviewRotation = DiceRotations.rotations[GetSideUp()];
+        targetPosition = position;
+        targetRotation = DiceRotations.rotations[GetSideUp()];
+    }
+
+    public void MoveToResolution(Vector3 position)
+    {
+        body.isKinematic = true;
+        isMovingToOverview = false;
+        isMovingToResolution = true;
+
+        targetPosition = position + Random.insideUnitSphere * 0.3f;
+        angularSpeed = Random.onUnitSphere * 360f;
+        //targetScale = Vector3.zero;
+
+    }
+
+    bool isScalingDown = false;
+    public void ScaleDown()
+    {
+        isScalingDown = true;
+
+        targetScale = Vector3.zero;
     }
 
     void Update()
     {
         if(isMovingToOverview)
         {
-            transform.position = Vector3.Lerp(transform.position, targetOverviewPosition, 3f * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetOverviewRotation, 3f * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, 3f * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 3f * Time.deltaTime);
+        }
+
+        if(isMovingToResolution)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPosition, 3f * Time.deltaTime);
+            transform.Rotate(angularSpeed * Time.deltaTime);
+        }
+        
+        if(isScalingDown)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, 3f * Time.deltaTime);
         }
     }
 

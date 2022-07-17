@@ -7,12 +7,22 @@ public class DiceRerollState : BaseCombatState
     bool diceRolling = false;
     bool skipWhenPossible = false;
 
+    bool rerollAll = false;
+
     public DiceRerollState(CombatStateMachine stateMachine) : base("DiceReroll", stateMachine) {
     }
 
     public override void Enter()
     {
         CheckIfRerollAvailable();
+
+        foreach(CardItem card in stateMachine.activeCards)
+        {
+            if(card.item.GetType() == typeof(RerollAll))
+            {
+                rerollAll = true;
+            }
+        }
 
         stateMachine.cardSelectionConfirmButton.onClick.AddListener(SkipRerolling);
     }
@@ -55,15 +65,40 @@ public class DiceRerollState : BaseCombatState
                 DiceGameObject dice = hit.collider.GetComponent<DiceGameObject>();
                 if(dice)
                 {
-                    dice.transform.position = stateMachine.RandomPointInBounds(stateMachine.playerDiceSpawnBounds.bounds);
-                    dice.transform.rotation = Random.rotationUniform;
+                    if(rerollAll)
+                    {
+                        RerollAllDice();
+                    }
+                    else
+                    {
+                        dice.transform.position = stateMachine.RandomPointInBounds(stateMachine.playerDiceSpawnBounds.bounds);
+                        dice.transform.rotation = Random.rotationUniform;
 
-                    dice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
+                        dice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
 
-                    stateMachine.playerAgent.rerolls--;
+                        stateMachine.playerAgent.rerolls--;
 
-                    diceRolling = true;
+                        diceRolling = true;
+                    }
                 }
+            }
+        }
+    }
+
+    void RerollAllDice()
+    {
+        foreach(CardItem card in stateMachine.activeCards)
+        {
+            foreach(DiceGameObject dice in card.childDice)
+            {
+                dice.transform.position = stateMachine.RandomPointInBounds(stateMachine.playerDiceSpawnBounds.bounds);
+                dice.transform.rotation = Random.rotationUniform;
+
+                dice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
+
+                //stateMachine.playerAgent.rerolls--;
+
+                diceRolling = true;
             }
         }
     }

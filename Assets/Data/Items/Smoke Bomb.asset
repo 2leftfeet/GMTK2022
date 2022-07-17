@@ -9,25 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e1dedba415fbc46a8a9ad7c85d5b3f, type: 3}
-  m_Name: Vampire Claws
+  m_Script: {fileID: 11500000, guid: 773aede13c6e1477cbd905a0d38ae288, type: 3}
+  m_Name: Smoke Bomb
   m_EditorClassIdentifier: 
-  itemName: Vampire Claws
+  itemName: SMOKE BOMB
   diceSides:
-  - type: 0
-    value: 1
-  - type: 0
-    value: 1
-  - type: 0
-    value: 1
+  - type: 1
+    value: 2
+  - type: 1
+    value: 2
   - type: 0
     value: 1
   - type: 0
     value: 0
   - type: 0
     value: 0
-  diceCount: 6
+  - type: 0
+    value: 0
+  diceCount: 1
   image: {fileID: 0}
-  textBox: 
-  cooldown: 2
-  executionOrder: 999
+  textBox: If your reroll this turn, reroll all dice
+  cooldown: 0
+  executionOrder: 0

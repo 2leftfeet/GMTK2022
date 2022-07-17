@@ -42,6 +42,7 @@ public class CardSlot : MonoBehaviour
     public void RemoveCard()
     {
         isEmpty = true;
+        currentCard = null;
     }
 
     public void CheckHolder()

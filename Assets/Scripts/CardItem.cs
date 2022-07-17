@@ -11,6 +11,9 @@ public class CardItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI cardTitle;
     [SerializeField] TextMeshProUGUI cardDescription;
     [SerializeField] TextMeshProUGUI diceCounter;
+     [SerializeField] TextMeshProUGUI cooldownCounter;
+    [SerializeField] GameObject cooldownOverlay;
+    [SerializeField] TextMeshProUGUI currentCooldownCounter;
     public bool isRewardCard;
 
     [SerializeField] Image cardImage;
@@ -27,6 +30,9 @@ public class CardItem : MonoBehaviour
 
     public CombatAgent owner;
 
+    [HideInInspector]
+    public int inactiveForTurns = 0;
+
     public void Start()
     {
         if (!item) Debug.LogWarning("No Base item was assigned");
@@ -39,10 +45,37 @@ public class CardItem : MonoBehaviour
         cardDescription.text = item.textBox;
         cardImage.sprite = item.image;
         diceCounter.text = "X" + item.diceCount.ToString();
+        cooldownCounter.text = item.cooldown.ToString();
 
         for (int i = 0; i < 6; i++)
         {
-            diceSideimages[i].texture = diceSideData.GetTexture(item.diceSides[i]);
+            diceSideimages[i].material = diceSideData.GetMaterial(item.diceSides[i]);
+        }
+    }
+
+    public void SetOnCooldown()
+    {
+        if(item.cooldown <= 0) return;
+
+        inactiveForTurns = item.cooldown;
+
+        cooldownOverlay.SetActive(true);
+        currentCooldownCounter.text = inactiveForTurns.ToString();
+
+        GetComponent<CardPosition>().isMovable = false;
+    }
+
+    public void CooldownDecrement()
+    {
+        if(inactiveForTurns <= 0) return;
+
+        inactiveForTurns--;
+        currentCooldownCounter.text = inactiveForTurns.ToString();
+
+        if(inactiveForTurns <= 0)
+        {
+            cooldownOverlay.SetActive(false);
+            GetComponent<CardPosition>().isMovable = true;
         }
     }
 }

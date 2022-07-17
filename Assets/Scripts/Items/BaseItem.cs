@@ -13,6 +13,8 @@ public class BaseItem : ScriptableObject
 
     public string textBox;
 
+
+    public int cooldown = 0;
     public int executionOrder = 0;
 
     void OnValidate()
@@ -23,7 +25,7 @@ public class BaseItem : ScriptableObject
         }
     }
 
-    public virtual void ResolveItem(ref RoundEffects effects, List<DiceGameObject> diceList)
+    public virtual void ResolveItem(ref RoundEffects effects, List<DiceGameObject> diceList, CombatAgent owner)
     {
         for(int i = 0; i < diceCount; i++)
         {

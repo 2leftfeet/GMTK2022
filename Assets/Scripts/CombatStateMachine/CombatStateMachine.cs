@@ -34,6 +34,12 @@ public class CombatStateMachine : MonoBehaviour
     public Transform enemyDefenseDiceGroupPoint;
     public Transform enemyUniqueDiceGroupPoint;
 
+    public Transform playerHealthVial;
+    public Transform enemyHealthVial;
+    public Transform playerShield;
+    public Transform enemyShield;
+    
+
     public float diceGroupOffset;
 
     public List<CardItem> activeCards = new List<CardItem>();
@@ -123,6 +129,17 @@ public class CombatStateMachine : MonoBehaviour
 
     public void ClearActiveCards()
     {
+        foreach(CardItem card in playerAgent.inventory)
+        {
+            card.CooldownDecrement();
+        }
+
+        //set active cards on cooldown
+        foreach(CardItem card in activeCards)
+        {
+            card.SetOnCooldown();
+        }
+
         activeCards.Clear();
         enemyActiveCards.Clear();
     }

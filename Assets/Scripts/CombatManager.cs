@@ -11,6 +11,8 @@ public class RoundEffects
 
     public int healthToHeal = 0;
 
+    public int unscaledDamage = 0;
+
     //not yet sure how we do debuffs and other more unique effects
     //public bool applyWeakness = false;
     public void Reset()

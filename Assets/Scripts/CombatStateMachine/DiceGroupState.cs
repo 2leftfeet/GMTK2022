@@ -27,7 +27,7 @@ public class DiceGroupState : BaseCombatState
 
         attackGroup = isPlayer ? stateMachine.attackDiceGroupPoint : stateMachine.enemyAttackDiceGroupPoint;
         defenseGroup = isPlayer ? stateMachine.defenseDiceGroupPoint : stateMachine.enemyDefenseDiceGroupPoint;
-        uniqueGroup = isPlayer ? stateMachine.uniqueDiceGroupPoint : stateMachine.uniqueDiceGroupPoint;
+        uniqueGroup = isPlayer ? stateMachine.uniqueDiceGroupPoint : stateMachine.enemyUniqueDiceGroupPoint;
 
         offsetDir = isPlayer ? Vector3.forward : Vector3.back;
 

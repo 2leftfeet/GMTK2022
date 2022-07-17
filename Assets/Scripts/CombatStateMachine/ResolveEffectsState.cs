@@ -24,12 +24,12 @@ public class ResolveEffectsState : BaseCombatState
             if(card.owner == stateMachine.playerAgent)
             {
                 //player to enemy
-                card.item.ResolveItem(ref playerEffects, card.childDice);
+                card.item.ResolveItem(ref playerEffects, card.childDice, stateMachine.playerAgent);
             }
             else if(card.owner == stateMachine.enemyAgent)
             {
                 //enmy to player
-                card.item.ResolveItem(ref enemyEffects, card.childDice);
+                card.item.ResolveItem(ref enemyEffects, card.childDice, stateMachine.enemyAgent);
             }
             else
             {
@@ -40,26 +40,16 @@ public class ResolveEffectsState : BaseCombatState
         //apply effects
         stateMachine.playerAgent.AddShield(playerEffects.totalShield * playerEffects.totalShieldMultiplier);
         
-        stateMachine.playerAgent.DealDamage(enemyEffects.totalDamage * enemyEffects.totalDamageMultiplier);
+        stateMachine.playerAgent.DealDamage(enemyEffects.totalDamage * enemyEffects.totalDamageMultiplier + enemyEffects.unscaledDamage);
         stateMachine.playerAgent.Heal(playerEffects.healthToHeal);
         
 
         stateMachine.enemyAgent.AddShield(enemyEffects.totalShield * enemyEffects.totalShieldMultiplier);
 
-        stateMachine.enemyAgent.DealDamage(playerEffects.totalDamage * playerEffects.totalDamageMultiplier);
+        stateMachine.enemyAgent.DealDamage(playerEffects.totalDamage * playerEffects.totalDamageMultiplier + enemyEffects.unscaledDamage);
         stateMachine.enemyAgent.Heal(enemyEffects.healthToHeal);
         
-
-
-        //go back to select cards, TODO: Death/Reward states
-        SelectCardsState selectCards = new SelectCardsState(stateMachine);
-        stateMachine.ChangeState(selectCards);
+        DiceResolveAnimState diceAnim = new DiceResolveAnimState(stateMachine);
+        stateMachine.ChangeState(diceAnim);
     }
-
-    public override void Exit()
-    {
-        stateMachine.ClearDice();
-        stateMachine.ClearActiveCards();
-    }
-    
 }
