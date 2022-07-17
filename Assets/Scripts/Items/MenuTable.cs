@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class MenuTable : MonoBehaviour
 {
     public Button restartButton;
     public Button retryButton;
+
+    public TextMeshProUGUI textBox;
 
     public bool isCalled;
 

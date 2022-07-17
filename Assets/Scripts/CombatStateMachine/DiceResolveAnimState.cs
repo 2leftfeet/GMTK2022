@@ -91,11 +91,21 @@ public class DiceResolveAnimState : BaseCombatState
              //go back to select cards, TODO: Death/Reward states
             if(stateMachine.playerAgent.health <= 0)
             {
+                stateMachine.menuTable.textBox.text = "You have perished. Do you want to retry the last encounter or restart the game?";
+
                 DeathState deathState = new DeathState(stateMachine);
                 stateMachine.ChangeState(deathState);
             }
             else if(stateMachine.enemyAgent.health <= 0)
             {
+                if(stateMachine.currentRound == 5)
+                {
+                    stateMachine.menuTable.textBox.text = "Congratulations! Your adventure was a success, thank you for your time. Press retry to fight the dragon again or press restart to start another run.";
+
+                    DeathState deathState = new DeathState(stateMachine);
+                    stateMachine.ChangeState(deathState);
+                }
+
                 RewardsPhaseState rewardsState = new RewardsPhaseState(stateMachine);
                 stateMachine.ChangeState(rewardsState);
             }

@@ -111,8 +111,6 @@ public class CombatStateMachine : MonoBehaviour
 
     private void OnGUI()
     {
-        string content = currentState != null ? currentState.name : "(no current state)";
-        GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
     }
 
     public DiceGameObject SpawnDice(Vector3 position, Quaternion rotation)
