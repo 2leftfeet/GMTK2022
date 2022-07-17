@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.83935106, b: 0.3820755, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -476,8 +476,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4284602111
+  m_fontColor: {r: 1, g: 0.83935106, b: 0.3820755, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1925,6 +1925,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124093378105825017, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: UVModule.cycles
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124093378105825017, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.23529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124093378105825017, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.3803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124093378105825017, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8133178
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124093378105825017, guid: ce05ad76a5941764e992b1c8e7905980,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce05ad76a5941764e992b1c8e7905980, type: 3}
