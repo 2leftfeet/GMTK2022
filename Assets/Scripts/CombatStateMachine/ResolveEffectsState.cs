@@ -36,19 +36,19 @@ public class ResolveEffectsState : BaseCombatState
                 Debug.LogError($"Owner of card {card.name} not referenced by combat state machine");
             }
         }
-        
 
         //apply effects
+        stateMachine.playerAgent.AddShield(playerEffects.totalShield * playerEffects.totalShieldMultiplier);
+        
         stateMachine.playerAgent.DealDamage(enemyEffects.totalDamage * enemyEffects.totalDamageMultiplier);
         stateMachine.playerAgent.Heal(playerEffects.healthToHeal);
         
-        stateMachine.playerAgent.AddShield(playerEffects.totalShield * playerEffects.totalShieldMultiplier);
 
+        stateMachine.enemyAgent.AddShield(enemyEffects.totalShield * enemyEffects.totalShieldMultiplier);
 
         stateMachine.enemyAgent.DealDamage(playerEffects.totalDamage * playerEffects.totalDamageMultiplier);
         stateMachine.enemyAgent.Heal(enemyEffects.healthToHeal);
         
-        stateMachine.enemyAgent.AddShield(enemyEffects.totalShield * enemyEffects.totalShieldMultiplier);
 
 
         //go back to select cards, TODO: Death/Reward states
