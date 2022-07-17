@@ -105,9 +105,12 @@ public class DiceResolveAnimState : BaseCombatState
                     DeathState deathState = new DeathState(stateMachine);
                     stateMachine.ChangeState(deathState);
                 }
+                else
+                {
+                    RewardsPhaseState rewardsState = new RewardsPhaseState(stateMachine);
+                    stateMachine.ChangeState(rewardsState);
+                }
 
-                RewardsPhaseState rewardsState = new RewardsPhaseState(stateMachine);
-                stateMachine.ChangeState(rewardsState);
             }
             else
             {
