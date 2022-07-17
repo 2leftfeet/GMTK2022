@@ -11,6 +11,11 @@ public class EnemyMoveCardsState : BaseCombatState
 
     public override void Enter()
     {
+        foreach(CardSlot slot in stateMachine.combatSelectSlots)
+        {
+            slot.isEmpty = true;
+        }
+
         for(int i = 0; i < stateMachine.enemyActiveCards.Count; i++)
         {
             CardItem card = stateMachine.enemyActiveCards[i];
@@ -30,10 +35,16 @@ public class EnemyMoveCardsState : BaseCombatState
 
     public override void Exit()
     {
+
         for(int i = 0; i < stateMachine.enemyActiveCards.Count; i++)
         {
             CardItem card = stateMachine.enemyActiveCards[i];
             card.GetComponent<CardPosition>().GoBackToOldSlot();
+        }
+        
+        foreach(CardSlot slot in stateMachine.combatSelectSlots)
+        {
+            slot.isEmpty = false;
         }
     }
 }

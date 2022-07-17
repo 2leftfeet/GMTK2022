@@ -24,12 +24,12 @@ public class ResolveEffectsState : BaseCombatState
             if(card.owner == stateMachine.playerAgent)
             {
                 //player to enemy
-                card.item.ResolveItem(ref playerEffects, card.childDice, stateMachine.playerAgent);
+                card.item.ResolveItem(ref playerEffects, ref enemyEffects, card.childDice, stateMachine.playerAgent, stateMachine.enemyAgent);
             }
             else if(card.owner == stateMachine.enemyAgent)
             {
                 //enmy to player
-                card.item.ResolveItem(ref enemyEffects, card.childDice, stateMachine.enemyAgent);
+                card.item.ResolveItem(ref enemyEffects, ref playerEffects, card.childDice, stateMachine.enemyAgent, stateMachine.playerAgent);
             }
             else
             {

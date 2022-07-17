@@ -12,7 +12,10 @@ public class SelectCardsState : BaseCombatState
 
     public override void Enter()
     {
-        //playerSelected = new List<CardItem>();
+        foreach(CardSlot slot in stateMachine.combatSelectSlots)
+        {
+            slot.isEmpty = true;
+        }
 
         //setup button listener
         stateMachine.cardSelectionConfirmButton.onClick.AddListener(CardsConfirmed);
@@ -53,5 +56,10 @@ public class SelectCardsState : BaseCombatState
     public override void Exit()
     {
         stateMachine.cardSelectionConfirmButton.onClick.RemoveAllListeners();
+
+        foreach(CardSlot slot in stateMachine.combatSelectSlots)
+        {
+            slot.isEmpty = false;
+        }
     }
 }

@@ -25,7 +25,7 @@ public class BaseItem : ScriptableObject
         }
     }
 
-    public virtual void ResolveItem(ref RoundEffects effects, List<DiceGameObject> diceList, CombatAgent owner)
+    public virtual void ResolveItem(ref RoundEffects ownerEffects, ref RoundEffects targetEffects, List<DiceGameObject> diceList, CombatAgent owner, CombatAgent target)
     {
         for(int i = 0; i < diceCount; i++)
         {
@@ -34,19 +34,19 @@ public class BaseItem : ScriptableObject
             switch(rolledSide.type)
             {
                 case SideType.Damage:
-                    effects.totalDamage += rolledSide.value;
+                    ownerEffects.totalDamage += rolledSide.value;
                     break;
                 case SideType.DamageMultiplier:
-                    effects.totalDamageMultiplier *= rolledSide.value;
+                    ownerEffects.totalDamageMultiplier *= rolledSide.value;
                     break;
                 case SideType.Shield:
-                    effects.totalShield += rolledSide.value;
+                    ownerEffects.totalShield += rolledSide.value;
                     break;
                 case SideType.ShieldMultiplier:
-                    effects.totalShieldMultiplier *= rolledSide.value;
+                    ownerEffects.totalShieldMultiplier *= rolledSide.value;
                     break;
                 case SideType.Healing:
-                    effects.healthToHeal += rolledSide.value;
+                    ownerEffects.healthToHeal += rolledSide.value;
                     break;
             }
         }
