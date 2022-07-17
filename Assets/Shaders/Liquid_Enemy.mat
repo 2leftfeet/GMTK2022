@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Liquid
+  m_Name: Liquid_Enemy
   m_Shader: {fileID: -6465566751694194690, guid: c7d057ced70a6e44d9d879704562cad1,
     type: 3}
   m_ValidKeywords: []
@@ -54,6 +54,6 @@ Material:
     - _WobbleX: 0
     - _WobbleZ: 0
     m_Colors:
-    - _Fill_Color: {r: 0, g: 0.107791275, b: 0.31132078, a: 0}
-    - _Top_Color: {r: 0, g: 0.37185535, b: 0.6698113, a: 0}
+    - _Fill_Color: {r: 0.30980393, g: 0.2103887, b: 0, a: 0}
+    - _Top_Color: {r: 0.67058825, g: 0.44301775, b: 0, a: 0}
   m_BuildTextureStacks: []

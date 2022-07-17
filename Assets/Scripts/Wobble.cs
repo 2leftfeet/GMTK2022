@@ -23,6 +23,7 @@ public class Wobble : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
+        VelocitySet();
     }
     private void Update()
     {
