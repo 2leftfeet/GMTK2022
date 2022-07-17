@@ -28,6 +28,7 @@ public static class DiceRotations
 public class DiceGameObject : MonoBehaviour
 {
     [SerializeField] DiceSideDatabase diceSideData;
+    public GameObject highlightEffect;
     
     public CardItem parentCard;
 

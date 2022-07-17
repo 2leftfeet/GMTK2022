@@ -20,27 +20,47 @@ public class CardHighlight : MonoBehaviour
     public bool isEnemy;
 
     CardPosition cardPosition;
+    CardItem cardItem;
+
+    [SerializeField] GameObject highlightParticle;
 
     private void Start()
     {
         oldScale = transform.localScale;
         child = gameObject.transform.GetChild(0).transform;
         cardPosition = GetComponent<CardPosition>();
+        cardItem = GetComponent<CardItem>();
         oldPostion = Vector3.zero;
         if (isEnemy) cardPosition.isMovable = false;
     }
 
     private void OnMouseEnter()
     {
-            newScale = new Vector3(transform.localScale.x + ammountToScale, transform.localScale.y + ammountToScale, transform.localScale.z + ammountToScale);
-            if (isEnemy) newPosition = new Vector3(child.localPosition.x + ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
-            else if (!isEnemy) newPosition = new Vector3(child.localPosition.x - ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
-            isSelected = true;
+        if (cardItem.childDice.Count > 0)
+        {
+            highlightParticle.SetActive(true);
+            foreach (DiceGameObject diceGameObject in cardItem.childDice)
+            {
+                diceGameObject.highlightEffect.SetActive(true);
+            }
+        }
+        newScale = new Vector3(transform.localScale.x + ammountToScale, transform.localScale.y + ammountToScale, transform.localScale.z + ammountToScale);
+        if (isEnemy) newPosition = new Vector3(child.localPosition.x + ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
+        else if (!isEnemy) newPosition = new Vector3(child.localPosition.x - ammountToMoveYAxis, child.localPosition.y, child.localPosition.z + 0.05f);
+        isSelected = true;
     }
 
     private void OnMouseExit()
     {
-        isSelected = false;       
+        isSelected = false;
+        if (cardItem.childDice.Count > 0)
+        {
+            highlightParticle.SetActive(false);
+            foreach (DiceGameObject diceGameObject in cardItem.childDice)
+            {
+                diceGameObject.highlightEffect.SetActive(false);
+            }
+        }
     }
 
     private void Update()
