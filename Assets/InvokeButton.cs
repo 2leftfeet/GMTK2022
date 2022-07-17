@@ -7,6 +7,8 @@ public class InvokeButton : MonoBehaviour
 {
     Button button;
 
+    bool isUsable;
+
     [SerializeField] GameObject highlightParticle;
 
     public void Start()
@@ -15,15 +17,21 @@ public class InvokeButton : MonoBehaviour
     }
     private void OnMouseOver()
     {
-        highlightParticle.SetActive(true);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isUsable)
         {
             button.onClick.Invoke();
         }
     }
 
-    private void OnMouseExit()
+    public void EnableHighlight()
+    {
+        highlightParticle.SetActive(true);
+        isUsable = true;
+    }
+
+    public void DisableHighlight()
     {
         highlightParticle.SetActive(false);
+        isUsable = false;
     }
 }
