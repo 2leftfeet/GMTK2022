@@ -14,6 +14,8 @@ public class CombatAgent : MonoBehaviour
 
     public List<CardItem> inventory = new List<CardItem>();
 
+    public Texture2D portrait;
+
     public void Setup()
     {
         health = maxHealth;

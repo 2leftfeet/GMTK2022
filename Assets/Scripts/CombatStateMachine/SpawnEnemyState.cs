@@ -43,6 +43,8 @@ public class SpawnEnemyState : BaseCombatState
         stateMachine.enemyAgent.Setup();
         stateMachine.UpdateEnemyUI();
 
+        stateMachine.enemyPortrait.material.SetTexture("_BaseMap", stateMachine.enemyPortraits[stateMachine.currentRound - 1]);
+
         SelectCardsState selectCardsState = new SelectCardsState(stateMachine);
         stateMachine.ChangeState(selectCardsState);
     }

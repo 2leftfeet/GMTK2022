@@ -48,6 +48,8 @@ public class CombatStateMachine : MonoBehaviour
     public MenuTable menuTable;
 
     public InvokeButton coinButton;
+    public MeshRenderer enemyPortrait;
+    public List<Texture2D> enemyPortraits;
     
     
 

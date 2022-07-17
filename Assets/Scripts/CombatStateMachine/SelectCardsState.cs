@@ -12,7 +12,7 @@ public class SelectCardsState : BaseCombatState
 
     public override void Enter()
     {
-        stateMachine.tutorialText.text = "Select two cards to play by dragging them into the middle board. Press the coin to confirm your choice.";
+        stateMachine.tutorialText.text = "Select one or two cards to play by dragging them into the middle board. Press the coin to confirm your choice.";
 
         foreach(CardSlot slot in stateMachine.combatSelectSlots)
         {
