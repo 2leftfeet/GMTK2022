@@ -40,11 +40,15 @@ public class CombatStateMachine : MonoBehaviour
     public TextMeshProUGUI enemyHealthVial;
     public TextMeshProUGUI playerShield;
     public TextMeshProUGUI enemyShield;
+    public TextMeshProUGUI playerRerolls;
 
     public TextMeshProUGUI tutorialText;
 
     public RewardTable rewardTable;
     public MenuTable menuTable;
+
+    public InvokeButton coinButton;
+    
     
 
     public float diceGroupOffset;
@@ -167,6 +171,11 @@ public class CombatStateMachine : MonoBehaviour
     {
         enemyHealthVial.text = enemyAgent.health.ToString();
         enemyShield.text = enemyAgent.shield.ToString();
+    }
+
+    public void UpdateRerollUI()
+    {
+        playerRerolls.text = playerAgent.rerolls.ToString();
     }
 
     public void CleanupEnemy()

@@ -6159,7 +6159,7 @@ MonoBehaviour:
   enemyHealthVial: {fileID: 2010973996}
   playerShield: {fileID: 1423067078}
   enemyShield: {fileID: 1372012066}
-  tutorialText: {fileID: 0}
+  tutorialText: {fileID: 5855470793472221386}
   rewardTable: {fileID: 2088413488}
   menuTable: {fileID: 498191359}
   diceGroupOffset: 0.15
@@ -6668,7 +6668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hey, this is a tutorial text
+  m_text: tetetet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 366d11baa78cce94b8727f9795c7e49f, type: 2}
   m_sharedMaterial: {fileID: 8953607564412369947, guid: 366d11baa78cce94b8727f9795c7e49f,
@@ -6696,8 +6696,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.61
-  m_fontSizeBase: 15.61
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6930,6 +6930,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6961713107031138223, guid: 68745c96b40b32949bf41bf48806f3ae,
+        type: 3}
+      propertyPath: isUsable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961713107031138223, guid: 68745c96b40b32949bf41bf48806f3ae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7428195359991068735, guid: 68745c96b40b32949bf41bf48806f3ae,
         type: 3}
       propertyPath: m_RootOrder
@@ -6983,6 +6993,11 @@ PrefabInstance:
     - target: {fileID: 7428195359991068735, guid: 68745c96b40b32949bf41bf48806f3ae,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581141162996717141, guid: 68745c96b40b32949bf41bf48806f3ae,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7808556750613291653, guid: 68745c96b40b32949bf41bf48806f3ae,
@@ -7085,7 +7100,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.08, y: -0.26}
-  m_SizeDelta: {x: 544.6, y: 39.21}
+  m_SizeDelta: {x: 641.46, y: 39.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &9069642343259899690
 RectTransform:
@@ -7106,5 +7121,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.6253, y: 1.523}
-  m_SizeDelta: {x: 549.2291, y: 36.3811}
+  m_SizeDelta: {x: 803.71, y: 36.3811}
   m_Pivot: {x: 0.5, y: 0.5}

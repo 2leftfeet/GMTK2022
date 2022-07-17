@@ -12,9 +12,11 @@ public class RoundCleanupState : BaseCombatState
         stateMachine.CleanupRewards();
 
         stateMachine.playerAgent.rerolls += 3;
+        stateMachine.playerAgent.health = stateMachine.playerAgent.maxHealth;
         stateMachine.playerAgent.shield = 0;
 
         stateMachine.UpdatePlayerUI();
+        stateMachine.UpdateRerollUI();
 
         stateMachine.currentRound ++;
 

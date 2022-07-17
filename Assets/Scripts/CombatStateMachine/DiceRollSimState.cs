@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DiceRollSimState : BaseCombatState
 {
+    static float maxTime = 5f;
+    float timer = 0f;
 
     bool isPlayer;
     List<CardItem> cardsToRoll;
@@ -45,6 +47,21 @@ public class DiceRollSimState : BaseCombatState
 
     public override void UpdatePhysics()
     {
+        timer += Time.deltaTime;
+        if(timer > maxTime)
+        {
+            if(isPlayer)
+                {
+                    DiceRerollState rerollState = new DiceRerollState(stateMachine);
+                    stateMachine.ChangeState(rerollState);
+                }
+                else
+                {
+                    DiceGroupState groupState = new DiceGroupState(stateMachine, false);
+                    stateMachine.ChangeState(groupState);
+                }
+        }
+
         if(diceRolling)
         {
             bool allSleeping = true;

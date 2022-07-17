@@ -7,7 +7,7 @@ public class InvokeButton : MonoBehaviour
 {
     Button button;
 
-    bool isUsable;
+    public bool isUsable;
 
     [SerializeField] GameObject highlightParticle;
 
