@@ -1422,6 +1422,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &556506705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6961713107031138223, guid: 68745c96b40b32949bf41bf48806f3ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 6961713106513691118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204231843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06cd152492cf70b4c956cc47470cf95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &618499115
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,7 +5409,7 @@ MonoBehaviour:
   tutorialText: {fileID: 5855470793472221386}
   rewardTable: {fileID: 2088413488}
   menuTable: {fileID: 498191359}
-  coinButton: {fileID: 0}
+  coinButton: {fileID: 556506705}
   diceGroupOffset: 0.15
   activeCards: []
   enemyActiveCards: []
