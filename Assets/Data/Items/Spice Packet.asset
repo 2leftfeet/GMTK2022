@@ -9,25 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773aede13c6e1477cbd905a0d38ae288, type: 3}
-  m_Name: Smoke Bomb
+  m_Script: {fileID: 11500000, guid: 549d91d370a184f89bcd943e1e540741, type: 3}
+  m_Name: Spice Packet
   m_EditorClassIdentifier: 
-  itemName: SMOKE BOMB
+  itemName: Spice Packet
   diceSides:
-  - type: 1
-    value: 2
-  - type: 1
-    value: 2
-  - type: 0
+  - type: 4
     value: 1
-  - type: 0
+  - type: 4
     value: 0
-  - type: 0
+  - type: 4
     value: 0
-  - type: 0
+  - type: 4
+    value: 0
+  - type: 4
+    value: 0
+  - type: 4
     value: 0
   diceCount: 1
-  image: {fileID: 21300000, guid: 3a393d737fabd1240aeaed3c8699ca50, type: 3}
-  textBox: If your reroll this turn, reroll all dice
+  image: {fileID: 21300000, guid: 5baeea7d8eadf3c4593168a643448494, type: 3}
+  textBox: If you heal this turn, heal 4 extra
   cooldown: 0
   executionOrder: 0
+  extraHealingAmount: 4
