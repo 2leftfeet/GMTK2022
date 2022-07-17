@@ -31,6 +31,9 @@ public class InitSetupState : BaseCombatState
             stateMachine.playerAgent.inventory.Add(spawnedCard);
         }
 
+        stateMachine.playerAgent.Setup();
+        stateMachine.UpdatePlayerUI();
+
         SpawnEnemyState spawnEnemyState = new SpawnEnemyState(stateMachine);
         stateMachine.ChangeState(spawnEnemyState);
     }

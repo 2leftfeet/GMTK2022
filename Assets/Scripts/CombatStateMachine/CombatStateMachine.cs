@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CombatStateMachine : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CombatStateMachine : MonoBehaviour
 
 
     public EnemyDatabase enemyDatabase;
+    public RewardDatabase rewardDatabase;
     public CombatAgentData playerData;
 
     public CardSlot[] playerCardSlots;
@@ -34,10 +36,12 @@ public class CombatStateMachine : MonoBehaviour
     public Transform enemyDefenseDiceGroupPoint;
     public Transform enemyUniqueDiceGroupPoint;
 
-    public Transform playerHealthVial;
-    public Transform enemyHealthVial;
-    public Transform playerShield;
-    public Transform enemyShield;
+    public TextMeshProUGUI playerHealthVial;
+    public TextMeshProUGUI enemyHealthVial;
+    public TextMeshProUGUI playerShield;
+    public TextMeshProUGUI enemyShield;
+
+    public RewardTable rewardTable;
     
 
     public float diceGroupOffset;
@@ -47,11 +51,13 @@ public class CombatStateMachine : MonoBehaviour
     public List<CardItem> enemyActiveCards = new List<CardItem>();
 
     [HideInInspector]
-    public int currentRound = 0;
+    public int currentRound = 1;
 
 
     void Start()
     {
+        currentRound = 1;
+
         foreach(var slot in combatSelectSlots)
         {
             if(!slot.isBattleSlot) Debug.LogWarning($"slot {slot.name} should be a battle slot.");
@@ -91,6 +97,7 @@ public class CombatStateMachine : MonoBehaviour
     protected virtual BaseCombatState GetInitialState()
     {
         return new InitSetupState(this);
+        //return new RewardsPhaseState(this);
     }
 
     private void OnGUI()
@@ -145,6 +152,45 @@ public class CombatStateMachine : MonoBehaviour
 
         activeCards.Clear();
         enemyActiveCards.Clear();
+    }
+
+    public void UpdatePlayerUI()
+    {
+        playerHealthVial.text = playerAgent.health.ToString();
+        playerShield.text = playerAgent.shield.ToString();
+    }
+
+    public void UpdateEnemyUI()
+    {
+        enemyHealthVial.text = enemyAgent.health.ToString();
+        enemyShield.text = enemyAgent.shield.ToString();
+    }
+
+    public void CleanupEnemy()
+    {
+        foreach(CardItem card in enemyAgent.inventory)
+        {
+            Destroy(card.gameObject);
+        }
+
+        foreach(CardSlot slot in enemyCardSlots)
+        {
+            slot.RemoveCard();
+        }
+
+
+        Destroy(enemyAgent);
+        enemyAgent = null;
+    }
+
+    public void CleanupRewards()
+    {
+        foreach(CardSlot slot in rewardTable.cardSlots)
+        {
+            if(slot.currentCard != null)
+             Destroy(slot.currentCard.gameObject);
+            slot.RemoveCard();
+        }
     }
 
     public  Vector3 RandomPointInBounds(Bounds bounds) {

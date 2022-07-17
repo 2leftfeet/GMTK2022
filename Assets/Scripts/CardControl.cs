@@ -67,6 +67,8 @@ public class CardControl : MonoBehaviour
             CardSlot hitCardSlot = hit.collider.GetComponent<CardSlot>();
             if (hitCardSlot)
             {
+                if(hitCardSlot.isEnemy) return;
+
                 CardItem cardItem = controlledCard.GetComponent<CardItem>();
                 CardPosition cardPosition = controlledCard.GetComponent<CardPosition>();
                 if (cardItem.isRewardCard)

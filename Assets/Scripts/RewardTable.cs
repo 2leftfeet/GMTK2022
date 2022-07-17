@@ -6,6 +6,8 @@ public class RewardTable : MonoBehaviour
 {
     public bool isCalled;
 
+    public List<CardSlot> cardSlots = new List<CardSlot>();
+
     Vector3 startPosition;
     Vector3 calledPosition;
 

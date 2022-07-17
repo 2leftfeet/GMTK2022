@@ -7,16 +7,17 @@ public class CombatAgent : MonoBehaviour
     public int maxHealth = 50;
     public int cardPlayedPerTurn = 2;
 
-    int health = 50;
-    int shield = 0;
+    public int health = 13;
+    public int shield;
 
     public int rerolls = 3;
 
     public List<CardItem> inventory = new List<CardItem>();
 
-    void Start()
+    public void Setup()
     {
         health = maxHealth;
+        shield = 0;
     }
 
     public void DealDamage(int amount)

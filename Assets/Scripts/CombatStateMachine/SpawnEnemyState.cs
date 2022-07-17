@@ -11,7 +11,7 @@ public class SpawnEnemyState : BaseCombatState
     {
         //later should pick out enemy from EnemyDatabase based on which round it is
         //for now pick from temp variable
-        CombatAgentData enemyToSpawn = stateMachine.enemyDatabase.enemies[stateMachine.currentRound];
+        CombatAgentData enemyToSpawn = stateMachine.enemyDatabase.enemies[stateMachine.currentRound - 1];
 
         if(stateMachine.enemyAgent != null)
         {
@@ -39,6 +39,9 @@ public class SpawnEnemyState : BaseCombatState
             stateMachine.enemyAgent.inventory.Add(spawnedCard);
             
         }
+
+        stateMachine.enemyAgent.Setup();
+        stateMachine.UpdateEnemyUI();
 
         SelectCardsState selectCardsState = new SelectCardsState(stateMachine);
         stateMachine.ChangeState(selectCardsState);

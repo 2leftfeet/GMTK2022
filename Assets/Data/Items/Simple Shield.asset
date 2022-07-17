@@ -24,9 +24,10 @@ MonoBehaviour:
     value: 0
   - type: 2
     value: 0
-  - type: 3
-    value: 2
+  - type: 2
+    value: 0
   diceCount: 4
   image: {fileID: 21300000, guid: cae5536333459004f8b7c3662711133b, type: 3}
   textBox: Does not shield you from emotional damage
+  cooldown: 0
   executionOrder: 0

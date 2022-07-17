@@ -26,22 +26,22 @@ public class DiceResolveAnimState : BaseCombatState
                     //player shield
                     if(card.owner == stateMachine.playerAgent)
                     {
-                        dice.MoveToResolution(stateMachine.playerShield.position);
+                        dice.MoveToResolution(stateMachine.playerShield.transform.position);
                     }
                     else if(card.owner == stateMachine.enemyAgent)
                     {
-                        dice.MoveToResolution(stateMachine.enemyShield.position);
+                        dice.MoveToResolution(stateMachine.enemyShield.transform.position);
                     }
                 }
                 else
                 {
                     if(card.owner == stateMachine.playerAgent)
                     {
-                        dice.MoveToResolution(stateMachine.enemyHealthVial.position);
+                        dice.MoveToResolution(stateMachine.enemyHealthVial.transform.position);
                     }
                     else if(card.owner == stateMachine.enemyAgent)
                     {
-                        dice.MoveToResolution(stateMachine.playerHealthVial.position);
+                        dice.MoveToResolution(stateMachine.playerHealthVial.transform.position);
                     }
                 }
             }
@@ -67,13 +67,25 @@ public class DiceResolveAnimState : BaseCombatState
         if(timer > animDuration)
         {
              //go back to select cards, TODO: Death/Reward states
-            SelectCardsState selectCards = new SelectCardsState(stateMachine);
-            stateMachine.ChangeState(selectCards);
+
+            if(stateMachine.enemyAgent.health <= 0)
+            {
+                RewardsPhaseState rewardsState = new RewardsPhaseState(stateMachine);
+                stateMachine.ChangeState(rewardsState);
+            }
+            else
+            {
+                SelectCardsState selectCards = new SelectCardsState(stateMachine);
+                stateMachine.ChangeState(selectCards);
+            }
         }
     }
 
     public override void Exit()
     {
+        stateMachine.UpdatePlayerUI();
+        stateMachine.UpdateEnemyUI();
+
         stateMachine.ClearDice();
         stateMachine.ClearActiveCards();
 

@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f07ec960b372b41acb286cd8013831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TEMP_enemyToSpawn: {fileID: 11400000, guid: f25f35d62a1932144967cbd362324cb8, type: 2}
+  enemyDatabase: {fileID: 11400000, guid: d4abdbc94c0a24419be544b5bc691ebe, type: 2}
   playerData: {fileID: 11400000, guid: ce6eb18712075ca489a38eb172a6291d, type: 2}
   playerCardSlots:
   - {fileID: 543450653453749991}
@@ -967,6 +967,7 @@ MonoBehaviour:
   diceGroupOffset: 0.15
   activeCards: []
   enemyActiveCards: []
+  currentRound: 0
 --- !u!1 &466917171
 GameObject:
   m_ObjectHideFlags: 0

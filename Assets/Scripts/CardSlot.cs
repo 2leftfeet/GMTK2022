@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardSlot : MonoBehaviour
 {
     public bool isEmpty;
+    public bool isEnemy;
     [SerializeField] public bool isBattleSlot;
     [SerializeField] public bool isRewardSlot;
 
@@ -30,13 +31,15 @@ public class CardSlot : MonoBehaviour
 
     public void ResetPrimaryPosition()
     {
-        cardRestingPosition = transform.position + (Vector3.up * 0.03f);
+        cardRestingPosition = transform.position + (Vector3.up * 0.1f);
     }
 
     public void AttachCard(CardItem card)
     {
         isEmpty = false;
         currentCard = card;
+
+        card.GetComponent<CardPosition>().currentSlot = this;
     }
 
     public void RemoveCard()
