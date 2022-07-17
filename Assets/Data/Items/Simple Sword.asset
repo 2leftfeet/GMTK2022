@@ -28,6 +28,6 @@ MonoBehaviour:
     value: 0
   diceCount: 3
   image: {fileID: 21300000, guid: 80651a91b30147144bf0a40a76dd9283, type: 3}
-  textBox: Home made and "reliable"
+  textBox: <i>Was found at childers playground</i>
   cooldown: 0
   executionOrder: 0

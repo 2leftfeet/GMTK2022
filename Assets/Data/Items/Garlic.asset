@@ -9,25 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25087baf496ab0488ab46efe800fdb3, type: 3}
-  m_Name: Simple Shield
+  m_Script: {fileID: 11500000, guid: f982ab282e2ea413cb7f755525933b27, type: 3}
+  m_Name: Garlic
   m_EditorClassIdentifier: 
-  itemName: Simple Shield
+  itemName: Garlic
   diceSides:
-  - type: 2
+  - type: 4
     value: 1
-  - type: 2
+  - type: 4
     value: 1
-  - type: 2
+  - type: 4
     value: 1
-  - type: 2
+  - type: 4
+    value: 1
+  - type: 4
     value: 0
-  - type: 2
+  - type: 4
     value: 0
-  - type: 2
-    value: 0
-  diceCount: 4
-  image: {fileID: 21300000, guid: cae5536333459004f8b7c3662711133b, type: 3}
-  textBox: <i>Does not shield you from emotional damage</i>
+  diceCount: 1
+  image: {fileID: 21300000, guid: 9b43caeb9ea871648b4ab4861a6066f9, type: 3}
+  textBox: All your healing is converted to damage in this turn
   cooldown: 0
   executionOrder: 0

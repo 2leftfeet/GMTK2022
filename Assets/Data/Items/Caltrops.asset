@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f25087baf496ab0488ab46efe800fdb3, type: 3}
-  m_Name: Simple Shield
+  m_Name: Caltrops
   m_EditorClassIdentifier: 
-  itemName: Simple Shield
+  itemName: Caltrops
   diceSides:
-  - type: 2
+  - type: 0
     value: 1
-  - type: 2
+  - type: 0
     value: 1
-  - type: 2
-    value: 1
-  - type: 2
+  - type: 0
     value: 0
-  - type: 2
+  - type: 0
     value: 0
-  - type: 2
+  - type: 0
     value: 0
-  diceCount: 4
-  image: {fileID: 21300000, guid: cae5536333459004f8b7c3662711133b, type: 3}
-  textBox: <i>Does not shield you from emotional damage</i>
+  - type: 0
+    value: 0
+  diceCount: 8
+  image: {fileID: 21300000, guid: b5bccad1734ee714ea1cb302f5c93ee0, type: 3}
+  textBox: <i> Medieval Lego bricks</>
   cooldown: 0
   executionOrder: 0

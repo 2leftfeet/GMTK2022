@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25087baf496ab0488ab46efe800fdb3, type: 3}
-  m_Name: The ol Reliable
-  m_EditorClassIdentifier: 
-  itemName: The ol' reliable
+  m_Script: {fileID: 0}
+  m_Name: Boomerang
+  m_EditorClassIdentifier: Assembly-CSharp::RerollGenerator
+  itemName: Boomerang
   diceSides:
   - type: 0
-    value: 1
+    value: 2
   - type: 0
     value: 1
   - type: 0
@@ -23,11 +23,11 @@ MonoBehaviour:
   - type: 0
     value: 1
   - type: 0
-    value: 1
+    value: 0
   - type: 0
-    value: 1
-  diceCount: 1
-  image: {fileID: 21300000, guid: 61c61e20358ab5049aacfb3d6c7f3a78, type: 3}
-  textBox: <i>Always hits</i>
+    value: 0
+  diceCount: 2
+  image: {fileID: 21300000, guid: 6dcce24aa8e6b9940a60db9c7e6f77a1, type: 3}
+  textBox: if you deal damage this turn, gain a reroll
   cooldown: 0
   executionOrder: 0
