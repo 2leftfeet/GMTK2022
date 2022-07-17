@@ -53,14 +53,13 @@ public class CardHighlight : MonoBehaviour
     private void OnMouseExit()
     {
         isSelected = false;
-        if (cardItem.childDice.Count > 0)
+        
+        highlightParticle.SetActive(false);
+        foreach (DiceGameObject diceGameObject in cardItem.childDice)
         {
-            highlightParticle.SetActive(false);
-            foreach (DiceGameObject diceGameObject in cardItem.childDice)
-            {
-                diceGameObject.highlightEffect.SetActive(false);
-            }
+            diceGameObject.highlightEffect.SetActive(false);
         }
+        
     }
 
     private void Update()

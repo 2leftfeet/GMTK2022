@@ -11,7 +11,7 @@ public class SpawnEnemyState : BaseCombatState
     {
         //later should pick out enemy from EnemyDatabase based on which round it is
         //for now pick from temp variable
-        CombatAgentData enemyToSpawn = stateMachine.TEMP_enemyToSpawn;
+        CombatAgentData enemyToSpawn = stateMachine.enemyDatabase.enemies[stateMachine.currentRound];
 
         if(stateMachine.enemyAgent != null)
         {
