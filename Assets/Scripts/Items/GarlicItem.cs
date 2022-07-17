@@ -10,5 +10,6 @@ public class GarlicItem : BaseItem
         base.ResolveItem(ref ownerEffects, ref targetEffects, diceList, owner, target);
 
         ownerEffects.unscaledDamage += ownerEffects.healthToHeal;
+        ownerEffects.healthToHeal = 0;
     }
 }

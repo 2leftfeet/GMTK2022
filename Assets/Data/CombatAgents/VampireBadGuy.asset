@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24692214155d9d745b598976176c2088, type: 3}
   m_Name: VampireBadGuy
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 12
   startingCards:
   - {fileID: 11400000, guid: 887174aadffbe2d44bde1f24ac14c8cd, type: 2}
   - {fileID: 11400000, guid: adcc4d03ffef46647a644fed9e380c12, type: 2}
-  - {fileID: 11400000, guid: 20d3684026831e14a8de4f03a21966b5, type: 2}
+  - {fileID: 11400000, guid: 6908ee5a9f171634d99c8368eec60ae0, type: 2}
   isEnemy: 1
   cardsPlayedPerTurn: 2

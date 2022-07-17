@@ -46,7 +46,7 @@ public class ResolveEffectsState : BaseCombatState
 
         stateMachine.enemyAgent.AddShield(enemyEffects.totalShield * enemyEffects.totalShieldMultiplier);
 
-        stateMachine.enemyAgent.DealDamage(playerEffects.totalDamage * playerEffects.totalDamageMultiplier + enemyEffects.unscaledDamage);
+        stateMachine.enemyAgent.DealDamage(playerEffects.totalDamage * playerEffects.totalDamageMultiplier + playerEffects.unscaledDamage);
         stateMachine.enemyAgent.Heal(enemyEffects.healthToHeal);
         
         DiceResolveAnimState diceAnim = new DiceResolveAnimState(stateMachine);
