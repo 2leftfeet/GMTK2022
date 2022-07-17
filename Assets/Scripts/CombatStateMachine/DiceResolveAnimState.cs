@@ -60,6 +60,7 @@ public class DiceResolveAnimState : BaseCombatState
     }
 
     bool scalingDown = false;
+    bool updateUI = false;
 
     public override void UpdateLogic()
     {
@@ -75,11 +76,24 @@ public class DiceResolveAnimState : BaseCombatState
                 }
             }
         }
-        if(timer > animDuration)
+
+
+        if(!updateUI && timer > animDuration)
+        {
+            updateUI = true;
+            stateMachine.UpdatePlayerUI();
+            stateMachine.UpdateEnemyUI();
+        }
+        
+        if(timer > animDuration + 1f)
         {
              //go back to select cards, TODO: Death/Reward states
-
-            if(stateMachine.enemyAgent.health <= 0)
+            if(stateMachine.playerAgent.health <= 0)
+            {
+                DeathState deathState = new DeathState(stateMachine);
+                stateMachine.ChangeState(deathState);
+            }
+            else if(stateMachine.enemyAgent.health <= 0)
             {
                 RewardsPhaseState rewardsState = new RewardsPhaseState(stateMachine);
                 stateMachine.ChangeState(rewardsState);

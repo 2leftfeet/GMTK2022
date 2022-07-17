@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24692214155d9d745b598976176c2088, type: 3}
-  m_Name: VampireBadGuy
+  m_Name: DragonBadGuy
   m_EditorClassIdentifier: 
   maxHealth: 20
   startingCards:
-  - {fileID: 11400000, guid: 887174aadffbe2d44bde1f24ac14c8cd, type: 2}
-  - {fileID: 11400000, guid: adcc4d03ffef46647a644fed9e380c12, type: 2}
-  - {fileID: 11400000, guid: 20d3684026831e14a8de4f03a21966b5, type: 2}
+  - {fileID: 11400000, guid: 6f18265a1b7ae0744b4ad6f5f89b0ba4, type: 2}
+  - {fileID: 11400000, guid: 3a88d14ed91b24f85bf0dae6f3317761, type: 2}
+  - {fileID: 11400000, guid: 0befeacb45c934381ae4d9948eec7a5f, type: 2}
+  - {fileID: 11400000, guid: bb34bafc829e5004c95e95c3ac0f4b5e, type: 2}
   isEnemy: 1
   cardsPlayedPerTurn: 2

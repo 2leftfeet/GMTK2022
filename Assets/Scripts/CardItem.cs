@@ -78,4 +78,10 @@ public class CardItem : MonoBehaviour
             GetComponent<CardPosition>().isMovable = true;
         }
     }
+
+    public void RemoveCooldown()
+    {
+        inactiveForTurns = 0;
+        CooldownDecrement();
+    }
 }
