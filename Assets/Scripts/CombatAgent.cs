@@ -12,7 +12,7 @@ public class CombatAgent : MonoBehaviour
 
     public int rerolls = 3;
 
-    public List<BaseItem> inventory;
+    public List<CardItem> inventory = new List<CardItem>();
 
     void Start()
     {

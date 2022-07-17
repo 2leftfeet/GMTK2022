@@ -7,15 +7,33 @@ public class DiceGroupState : BaseCombatState
     static float groupStateDuration = 3f;
     float timer = 0.0f;
 
-    public DiceGroupState(CombatStateMachine stateMachine) : base("DiceGrouping", stateMachine)
+    bool isPlayer;
+    List<CardItem> cardsToGroup;
+
+    Transform attackGroup;
+    Transform defenseGroup;
+    Transform uniqueGroup;
+
+    Vector3 offsetDir;
+
+    public DiceGroupState(CombatStateMachine stateMachine, bool isPlayer) : base("DiceGrouping", stateMachine)
     {
+        this.isPlayer = isPlayer;
     }
 
     public override void Enter()
     {
+        cardsToGroup = isPlayer ? stateMachine.activeCards : stateMachine.enemyActiveCards;
+
+        attackGroup = isPlayer ? stateMachine.attackDiceGroupPoint : stateMachine.enemyAttackDiceGroupPoint;
+        defenseGroup = isPlayer ? stateMachine.defenseDiceGroupPoint : stateMachine.enemyDefenseDiceGroupPoint;
+        uniqueGroup = isPlayer ? stateMachine.uniqueDiceGroupPoint : stateMachine.uniqueDiceGroupPoint;
+
+        offsetDir = isPlayer ? Vector3.forward : Vector3.back;
+
         Dictionary<SideType, List<DiceGameObject>> groupedDice = new Dictionary<SideType, List<DiceGameObject>>();
         
-        foreach(CardItem card in stateMachine.activeCards)
+        foreach(CardItem card in cardsToGroup)
         {
             foreach(DiceGameObject dice in card.childDice)
             {
@@ -42,7 +60,7 @@ public class DiceGroupState : BaseCombatState
             {
                 foreach(var dice in pair.Value)
                 {
-                    dice.MoveToOverview(stateMachine.attackDiceGroupPoint.position + Vector3.forward * stateMachine.diceGroupOffset * attackCount);
+                    dice.MoveToOverview(attackGroup.position + offsetDir * stateMachine.diceGroupOffset * attackCount);
                     attackCount++;
                 }
             }
@@ -50,7 +68,7 @@ public class DiceGroupState : BaseCombatState
             {
                 foreach(var dice in pair.Value)
                 {
-                    dice.MoveToOverview(stateMachine.defenseDiceGroupPoint.position + Vector3.forward * stateMachine.diceGroupOffset * defenseCount);
+                    dice.MoveToOverview(defenseGroup.position + offsetDir * stateMachine.diceGroupOffset * defenseCount);
                     defenseCount++;
                 }
             }
@@ -58,7 +76,7 @@ public class DiceGroupState : BaseCombatState
             {
                 foreach(var dice in pair.Value)
                 {
-                    dice.MoveToOverview(stateMachine.uniqueDiceGroupPoint.position + Vector3.forward * stateMachine.diceGroupOffset * uniqueCount);
+                    dice.MoveToOverview(uniqueGroup.position + offsetDir * stateMachine.diceGroupOffset * uniqueCount);
                     uniqueCount++;
                 }
             }
@@ -70,8 +88,16 @@ public class DiceGroupState : BaseCombatState
         timer += Time.deltaTime;
         if(timer > groupStateDuration)
         {
-            ResolveEffectsState resolveState = new ResolveEffectsState(stateMachine);
-            stateMachine.ChangeState(resolveState);
+            if(isPlayer)
+            {
+                EnemyMoveCardsState enemyMoveCardsState = new EnemyMoveCardsState(stateMachine);
+                stateMachine.ChangeState(enemyMoveCardsState);
+            }
+            else
+            {
+                ResolveEffectsState resolveState = new ResolveEffectsState(stateMachine);
+                stateMachine.ChangeState(resolveState);
+            }
         }
     }
 }

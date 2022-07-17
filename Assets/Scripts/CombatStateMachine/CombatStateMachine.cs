@@ -21,6 +21,7 @@ public class CombatStateMachine : MonoBehaviour
     public Button cardSelectionConfirmButton;
 
     public Collider playerDiceSpawnBounds;
+    public Collider enemyDiceSpawnBounds;
     public DiceGameObject dicePrototype;
     public CardItem cardPrototype;
 
@@ -28,9 +29,15 @@ public class CombatStateMachine : MonoBehaviour
     public Transform defenseDiceGroupPoint;
     public Transform uniqueDiceGroupPoint;
 
+    public Transform enemyAttackDiceGroupPoint;
+    public Transform enemyDefenseDiceGroupPoint;
+    public Transform enemyUniqueDiceGroupPoint;
+
     public float diceGroupOffset;
 
     public List<CardItem> activeCards = new List<CardItem>();
+
+    public List<CardItem> enemyActiveCards = new List<CardItem>();
 
 
     void Start()
@@ -90,6 +97,33 @@ public class CombatStateMachine : MonoBehaviour
     public CardItem SpawnCard(Vector3 position, Quaternion rotation)
     {
         return Instantiate(cardPrototype, position, rotation);
+    }
+
+    public void ClearDice()
+    {
+        foreach(CardItem card in activeCards)
+        {
+            foreach(DiceGameObject dice in card.childDice)
+            {
+                Destroy(dice.gameObject);
+            }
+            card.childDice.Clear();
+        }
+
+        foreach(CardItem card in enemyActiveCards)
+        {
+            foreach(DiceGameObject dice in card.childDice)
+            {
+                Destroy(dice.gameObject);
+            }
+            card.childDice.Clear();
+        }
+    }
+
+    public void ClearActiveCards()
+    {
+        activeCards.Clear();
+        enemyActiveCards.Clear();
     }
 
     public  Vector3 RandomPointInBounds(Bounds bounds) {

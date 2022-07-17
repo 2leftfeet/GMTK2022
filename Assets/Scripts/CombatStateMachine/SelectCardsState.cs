@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SelectCardsState : BaseCombatState
@@ -16,7 +17,15 @@ public class SelectCardsState : BaseCombatState
         //setup button listener
         stateMachine.cardSelectionConfirmButton.onClick.AddListener(CardsConfirmed);
 
-        //select the cards enemy is about to use
+        //select the cards enemy is about to use (dont ask questions it totally does it)
+        var randomCards = stateMachine.enemyAgent.inventory.OrderBy(x => Random.value).Take(stateMachine.enemyAgent.cardPlayedPerTurn).ToList();
+        stateMachine.enemyActiveCards = randomCards;
+
+        foreach(var card in randomCards)
+        {
+            Debug.Log("chosen " + card.item.name);
+        }
+        //also highlight the cards here
     }
 
     void CardsConfirmed()
@@ -37,7 +46,7 @@ public class SelectCardsState : BaseCombatState
             slot.currentCard.GetComponent<CardPosition>().GoBackToOldSlot();
         }
 
-        DiceRollSimState diceRollState = new DiceRollSimState(stateMachine);
+        DiceRollSimState diceRollState = new DiceRollSimState(stateMachine, true);
         stateMachine.ChangeState(diceRollState);
     }
 

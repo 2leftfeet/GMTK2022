@@ -13,11 +13,13 @@ public class ResolveEffectsState : BaseCombatState
     {
         RoundEffects playerEffects = new RoundEffects();
         RoundEffects enemyEffects = new RoundEffects();
+
+        List<CardItem> allCards = stateMachine.activeCards.Concat(stateMachine.enemyActiveCards).ToList();
         //sort cards by order of execution
-        stateMachine.activeCards.Sort((card1, card2) => card1.item.executionOrder.CompareTo(card2.item.executionOrder));
+        allCards.Sort((card1, card2) => card1.item.executionOrder.CompareTo(card2.item.executionOrder));
 
         //for each card resolve its effect
-        foreach(CardItem card in stateMachine.activeCards)
+        foreach(CardItem card in allCards)
         {
             if(card.owner == stateMachine.playerAgent)
             {
@@ -34,6 +36,7 @@ public class ResolveEffectsState : BaseCombatState
                 Debug.LogError($"Owner of card {card.name} not referenced by combat state machine");
             }
         }
+        
 
         //apply effects
         stateMachine.playerAgent.DealDamage(enemyEffects.totalDamage * enemyEffects.totalDamageMultiplier);
@@ -46,6 +49,17 @@ public class ResolveEffectsState : BaseCombatState
         stateMachine.enemyAgent.Heal(enemyEffects.healthToHeal);
         
         stateMachine.enemyAgent.AddShield(enemyEffects.totalShield * enemyEffects.totalShieldMultiplier);
+
+
+        //go back to select cards, TODO: Death/Reward states
+        SelectCardsState selectCards = new SelectCardsState(stateMachine);
+        stateMachine.ChangeState(selectCards);
+    }
+
+    public override void Exit()
+    {
+        stateMachine.ClearDice();
+        stateMachine.ClearActiveCards();
     }
     
 }
