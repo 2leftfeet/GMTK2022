@@ -28,6 +28,6 @@ MonoBehaviour:
     value: 0
   diceCount: 3
   image: {fileID: 21300000, guid: 0805b04424538514fb26b01f10343b7e, type: 3}
-  textBox: <i>Was found at childers playground</i>
+  textBox: <i>Was found at children's playground</i>
   cooldown: 0
   executionOrder: 0

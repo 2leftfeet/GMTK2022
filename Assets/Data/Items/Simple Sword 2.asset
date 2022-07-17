@@ -28,6 +28,6 @@ MonoBehaviour:
     value: 0
   diceCount: 4
   image: {fileID: 21300000, guid: d8f0516c109fd174ea6e3328cc5263e5, type: 3}
-  textBox: <i>Was found at squires quarters</i>
+  textBox: <i>Was found at squire's quarters</i>
   cooldown: 0
   executionOrder: 0

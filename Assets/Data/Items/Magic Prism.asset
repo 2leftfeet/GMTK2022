@@ -29,5 +29,5 @@ MonoBehaviour:
   diceCount: 1
   image: {fileID: 21300000, guid: cd4c843ef176a124e978c7a7fecffc6f, type: 3}
   textBox: <i><b><u>NOTICE<b></u> Magic use is foribiden and regulated by local laws</i>
-  cooldown: 0
+  cooldown: 1
   executionOrder: 0
