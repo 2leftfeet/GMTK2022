@@ -1127,7 +1127,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5068198092173251252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -86}
+  m_LocalPosition: {x: 0, y: 0, z: -129}
   m_LocalScale: {x: 0.6817192, y: 0.6817192, z: 0.6817192}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1136,7 +1136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.07, y: 18.59}
+  m_AnchoredPosition: {x: 4.1, y: 18.6}
   m_SizeDelta: {x: 84.56, y: 66.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &219233323980799702
@@ -1739,7 +1739,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4.994, y: -2.019}
-  m_SizeDelta: {x: 48.418, y: 10.672}
+  m_SizeDelta: {x: 54.52, y: 10.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7606954746497201508
 CanvasRenderer:
@@ -1769,7 +1769,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample Card
+  m_text: Vampiric Claws
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 366d11baa78cce94b8727f9795c7e49f, type: 2}
   m_sharedMaterial: {fileID: 8953607564412369947, guid: 366d11baa78cce94b8727f9795c7e49f,
@@ -1797,15 +1797,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4.92
+  m_fontSizeBase: 4.92
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
