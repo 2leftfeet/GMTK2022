@@ -34,6 +34,9 @@ public class SpawnEnemyState : BaseCombatState
             spawnedCard.owner = stateMachine.enemyAgent;
 
             spawnedCard.GetComponent<CardPosition>().isMovable = false;
+            spawnedCard.GetComponent<CardHighlight>().isEnemy = true;
+
+            stateMachine.enemyAgent.inventory.Add(spawnedCard);
             
         }
 

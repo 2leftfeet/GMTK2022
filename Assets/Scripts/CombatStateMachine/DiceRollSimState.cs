@@ -4,25 +4,36 @@ using UnityEngine;
 
 public class DiceRollSimState : BaseCombatState
 {
-    public DiceRollSimState(CombatStateMachine stateMachine) : base("DiceRollSim", stateMachine) {
+
+    bool isPlayer;
+    List<CardItem> cardsToRoll;
+    Bounds diceSpawnBounds;
+    Vector3 velocityDir;
+
+    public DiceRollSimState(CombatStateMachine stateMachine, bool isPlayer) : base("DiceRollSim", stateMachine) {
+        this.isPlayer = isPlayer;
     }
 
     bool diceRolling = false;
 
     public override void Enter()
     {   
+        cardsToRoll = isPlayer ? stateMachine.activeCards : stateMachine.enemyActiveCards;
+        diceSpawnBounds = isPlayer ? stateMachine.playerDiceSpawnBounds.bounds : stateMachine.enemyDiceSpawnBounds.bounds;
+        velocityDir = isPlayer ? Vector3.forward : Vector3.back;
+
         //Spawn and launch player dice
-        foreach(CardItem card in stateMachine.activeCards)
+        foreach(CardItem card in cardsToRoll)
         {
             int diceCount = card.item.diceCount;
             for(int i = 0; i < diceCount; i++)
             {
-                Vector3 randomPosition = stateMachine.RandomPointInBounds(stateMachine.playerDiceSpawnBounds.bounds);
+                Vector3 randomPosition = stateMachine.RandomPointInBounds(diceSpawnBounds);
                 DiceGameObject newDice = stateMachine.SpawnDice(randomPosition, Random.rotationUniform);
                 newDice.parentCard = card;
 
 
-                newDice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
+                newDice.GetComponent<Rigidbody>().velocity = velocityDir * 4f;
 
                 card.childDice.Add(newDice);
             }
@@ -38,7 +49,7 @@ public class DiceRollSimState : BaseCombatState
         {
             bool allSleeping = true;
 
-            foreach(CardItem card in stateMachine.activeCards)
+            foreach(CardItem card in cardsToRoll)
             {
                 foreach(DiceGameObject dice in card.childDice)
                 {
@@ -55,8 +66,16 @@ public class DiceRollSimState : BaseCombatState
            {
                 diceRolling = false;
                 //goto dice reroll
-                DiceRerollState rerollState = new DiceRerollState(stateMachine);
-                stateMachine.ChangeState(rerollState);
+                if(isPlayer)
+                {
+                    DiceRerollState rerollState = new DiceRerollState(stateMachine);
+                    stateMachine.ChangeState(rerollState);
+                }
+                else
+                {
+                    DiceGroupState groupState = new DiceGroupState(stateMachine, false);
+                    stateMachine.ChangeState(groupState);
+                }
            }
         }
     }

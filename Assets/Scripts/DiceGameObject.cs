@@ -5,23 +5,23 @@ using UnityEngine;
 
 
 //Dice face indices are as follows:
-//0 - forward
-//1 - down
-//2 - right
+//0 - forward -> left
+//1 - down -> right
+//2 - right -> down
 //3 - back
-//4 - left
+//4 - left -> forward
 //5 - up
 
 
 public static class DiceRotations
 {
     public static Quaternion[] rotations = {
-        Quaternion.Euler(-90f,0f,-90f),
-        Quaternion.Euler(0f,0f,180f),
-        Quaternion.Euler(0f, 180f, 90f),
-        Quaternion.Euler(90f, 0f, 90f),
         Quaternion.Euler(0f, 90f, -90f),
-        Quaternion.Euler(0f, 90f, 0f)
+        Quaternion.Euler(0f, 180f, 90f), 
+        Quaternion.Euler(0f,0f,180f), 
+        Quaternion.Euler(90f, 0f, 90f), 
+        Quaternion.Euler(-90f,0f,-90f), 
+        Quaternion.Euler(0f, 90f, 0f) 
     };
 }
 
@@ -57,11 +57,11 @@ public class DiceGameObject : MonoBehaviour
     {
         float[] dotProducts = new float[6];
 
-        dotProducts[0] = Vector3.Dot(Vector3.up, transform.forward);
-        dotProducts[1] = Vector3.Dot(Vector3.up, -transform.up);
-        dotProducts[2] = Vector3.Dot(Vector3.up, transform.right);
+        dotProducts[0] = Vector3.Dot(Vector3.up, -transform.right);
+        dotProducts[1] = Vector3.Dot(Vector3.up, transform.right);
+        dotProducts[2] = Vector3.Dot(Vector3.up, -transform.up);
         dotProducts[3] = Vector3.Dot(Vector3.up, -transform.forward);
-        dotProducts[4] = Vector3.Dot(Vector3.up, -transform.right);
+        dotProducts[4] = Vector3.Dot(Vector3.up, transform.forward);
         dotProducts[5] = Vector3.Dot(Vector3.up, transform.up);
 
         float maxDot = dotProducts.Max();

@@ -40,7 +40,7 @@ public class DiceRerollState : BaseCombatState
 
     void ChangeToGroupingState()
     {
-            DiceGroupState diceGroupState = new DiceGroupState(stateMachine);
+            DiceGroupState diceGroupState = new DiceGroupState(stateMachine, true);
             stateMachine.ChangeState(diceGroupState);
     }
 
