@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24692214155d9d745b598976176c2088, type: 3}
   m_Name: DragonBadGuy
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 30
   startingCards:
   - {fileID: 11400000, guid: 6f18265a1b7ae0744b4ad6f5f89b0ba4, type: 2}
   - {fileID: 11400000, guid: 3a88d14ed91b24f85bf0dae6f3317761, type: 2}
