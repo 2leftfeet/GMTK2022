@@ -9,6 +9,7 @@ public class CombatStateMachine : MonoBehaviour
 
 
     public CombatAgentData TEMP_enemyToSpawn;
+    public CombatAgentData playerData;
 
     public CardSlot[] playerCardSlots;
     public CardSlot[] enemyCardSlots;
@@ -80,7 +81,7 @@ public class CombatStateMachine : MonoBehaviour
 
     protected virtual BaseCombatState GetInitialState()
     {
-        return new SpawnEnemyState(this);
+        return new InitSetupState(this);
     }
 
     private void OnGUI()
