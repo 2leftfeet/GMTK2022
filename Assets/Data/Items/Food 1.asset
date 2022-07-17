@@ -28,6 +28,6 @@ MonoBehaviour:
     value: 0
   diceCount: 2
   image: {fileID: 21300000, guid: 67346ecddfb934cac9471107c59817aa, type: 3}
-  textBox: <i>Fresh out of a garden</i>
+  textBox: <i>Fresh out of a Gods garden</i>
   cooldown: 0
   executionOrder: 0

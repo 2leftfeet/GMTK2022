@@ -82,9 +82,10 @@ public class DiceResolveAnimState : BaseCombatState
         {
             updateUI = true;
             stateMachine.UpdatePlayerUI();
+            stateMachine.UpdateRerollUI();
             stateMachine.UpdateEnemyUI();
         }
-        
+
         if(timer > animDuration + 1f)
         {
              //go back to select cards, TODO: Death/Reward states
@@ -109,6 +110,7 @@ public class DiceResolveAnimState : BaseCombatState
     public override void Exit()
     {
         stateMachine.UpdatePlayerUI();
+        stateMachine.UpdateRerollUI();
         stateMachine.UpdateEnemyUI();
 
         stateMachine.ClearDice();

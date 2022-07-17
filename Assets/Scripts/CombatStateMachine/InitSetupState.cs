@@ -8,6 +8,9 @@ public class InitSetupState : BaseCombatState
 
     public override void Enter()
     {
+
+        stateMachine.tutorialText.text = "";
+
         CombatAgentData playerData = stateMachine.playerData;
 
         if(stateMachine.playerAgent != null)
@@ -33,6 +36,7 @@ public class InitSetupState : BaseCombatState
 
         stateMachine.playerAgent.Setup();
         stateMachine.UpdatePlayerUI();
+        stateMachine.UpdateRerollUI();
 
         SpawnEnemyState spawnEnemyState = new SpawnEnemyState(stateMachine);
         stateMachine.ChangeState(spawnEnemyState);

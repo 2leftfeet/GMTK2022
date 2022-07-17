@@ -30,6 +30,7 @@ public class DeathState : BaseCombatState
         }
 
         stateMachine.UpdatePlayerUI();
+        stateMachine.UpdateRerollUI();
         stateMachine.UpdateEnemyUI();
 
         SelectCardsState selectCards = new SelectCardsState(stateMachine);

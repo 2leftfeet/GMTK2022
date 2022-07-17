@@ -69,6 +69,7 @@ public class CardControl : MonoBehaviour
             {
                 if(hitCardSlot.isEnemy) return;
 
+
                 CardItem cardItem = controlledCard.GetComponent<CardItem>();
                 CardPosition cardPosition = controlledCard.GetComponent<CardPosition>();
                 if (cardItem.isRewardCard)
@@ -82,6 +83,11 @@ public class CardControl : MonoBehaviour
                 else if (hitCardSlot.isEmpty && !hitCardSlot.isRewardSlot)
                 {
                     cardPosition.positionInCardHolder = hitCardSlot.cardRestingPosition;
+
+                    if(cardPosition.currentSlot.isBattleSlot)
+                    {
+                        cardPosition.currentSlot.RemoveCard();
+                    }
                     hitCardSlot.AttachCard(controlledCard);
                     cardPosition.AttachToHolderPosition(hitCardSlot, hitCardSlot.isBattleSlot, hitCardSlot.isRewardSlot);
                 }
@@ -91,6 +97,11 @@ public class CardControl : MonoBehaviour
                 }
                 else if (cardPosition.oldSlot == hitCardSlot && !cardItem.isRewardCard)
                 {
+                    if(cardPosition.currentSlot.isBattleSlot)
+                    {
+                        cardPosition.currentSlot.RemoveCard();
+                    }
+
                     controlledCard.GetComponent<CardPosition>().positionInCardHolder = hitCardSlot.cardRestingPosition;
                     hitCardSlot.AttachCard(controlledCard);
                     controlledCard.GetComponent<CardPosition>().AttachToHolderPosition(hitCardSlot, hitCardSlot.isBattleSlot, hitCardSlot.isRewardSlot);

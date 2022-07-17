@@ -12,6 +12,8 @@ public class SelectCardsState : BaseCombatState
 
     public override void Enter()
     {
+        stateMachine.tutorialText.text = "Select two cards to play by dragging them into the middle board. Press the coin to confirm your choice.";
+
         foreach(CardSlot slot in stateMachine.combatSelectSlots)
         {
             slot.isEmpty = true;
@@ -30,6 +32,28 @@ public class SelectCardsState : BaseCombatState
             card.GetComponent<CardHighlight>().ForceHighlight(true);
         }
         //also highlight the cards here
+    }
+
+    public override void UpdateLogic()
+    {
+       int cardCount = 0;
+        foreach(var slot in stateMachine.combatSelectSlots)
+        {
+            if(slot.currentCard != null)
+            {
+                cardCount++;
+            } 
+        }
+
+        if(!stateMachine.coinButton.isUsable && cardCount > 0)
+        {
+            stateMachine.coinButton.EnableHighlight();
+        }
+
+        if(stateMachine.coinButton.isUsable && cardCount <= 0)
+        {
+            stateMachine.coinButton.DisableHighlight();
+        }
     }
 
     void CardsConfirmed()
@@ -53,6 +77,8 @@ public class SelectCardsState : BaseCombatState
             stateMachine.activeCards.Add(slot.currentCard);
 
             slot.currentCard.GetComponent<CardPosition>().GoBackToOldSlot();
+
+            slot.RemoveCard();
         }
 
         DiceRollSimState diceRollState = new DiceRollSimState(stateMachine, true);
@@ -61,7 +87,10 @@ public class SelectCardsState : BaseCombatState
 
     public override void Exit()
     {
+        stateMachine.tutorialText.text = "";
         stateMachine.cardSelectionConfirmButton.onClick.RemoveAllListeners();
+
+        stateMachine.coinButton.DisableHighlight();
 
         foreach(CardSlot slot in stateMachine.combatSelectSlots)
         {

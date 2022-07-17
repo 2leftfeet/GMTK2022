@@ -28,6 +28,6 @@ MonoBehaviour:
     value: 0
   diceCount: 3
   image: {fileID: 21300000, guid: 823b80ef726f14e7baefc6cb5651b134, type: 3}
-  textBox: 
+  textBox: <i>Does not shield you from emotional damage</i>
   cooldown: 0
   executionOrder: 0

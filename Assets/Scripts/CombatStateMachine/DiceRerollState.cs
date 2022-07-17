@@ -14,6 +14,9 @@ public class DiceRerollState : BaseCombatState
 
     public override void Enter()
     {
+        stateMachine.tutorialText.text = "Press any of the dice to reroll them. If you are happy with your results, press the coin to continue.";
+
+
         CheckIfRerollAvailable();
 
         foreach(CardItem card in stateMachine.activeCards)
@@ -24,6 +27,7 @@ public class DiceRerollState : BaseCombatState
             }
         }
 
+        stateMachine.coinButton.EnableHighlight();
         stateMachine.cardSelectionConfirmButton.onClick.AddListener(SkipRerolling);
     }
 
@@ -68,6 +72,8 @@ public class DiceRerollState : BaseCombatState
                     if(rerollAll)
                     {
                         RerollAllDice();
+                        stateMachine.playerAgent.rerolls--;
+                        stateMachine.UpdateRerollUI();
                     }
                     else
                     {
@@ -77,8 +83,10 @@ public class DiceRerollState : BaseCombatState
                         dice.GetComponent<Rigidbody>().velocity = Vector3.forward * 4f;
 
                         stateMachine.playerAgent.rerolls--;
+                        stateMachine.UpdateRerollUI();
 
                         diceRolling = true;
+                        stateMachine.coinButton.DisableHighlight();
                     }
                 }
             }
@@ -99,6 +107,7 @@ public class DiceRerollState : BaseCombatState
                 //stateMachine.playerAgent.rerolls--;
 
                 diceRolling = true;
+                stateMachine.coinButton.DisableHighlight();
             }
         }
     }
@@ -125,6 +134,7 @@ public class DiceRerollState : BaseCombatState
            {
                 Debug.Log("all sleeping");
                 diceRolling = false;
+                stateMachine.coinButton.EnableHighlight();
                 CheckIfRerollAvailable();
 
                 if(skipWhenPossible)
@@ -137,6 +147,8 @@ public class DiceRerollState : BaseCombatState
 
     public override void Exit()
     {
+        stateMachine.coinButton.DisableHighlight();
+        stateMachine.tutorialText.text = "";
         stateMachine.cardSelectionConfirmButton.onClick.RemoveAllListeners();
     }
 }
