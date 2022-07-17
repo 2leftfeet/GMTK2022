@@ -40,6 +40,7 @@ public class EnemyMoveCardsState : BaseCombatState
         {
             CardItem card = stateMachine.enemyActiveCards[i];
             card.GetComponent<CardPosition>().GoBackToOldSlot();
+            card.GetComponent<CardHighlight>().ForceHighlight(false);
         }
         
         foreach(CardSlot slot in stateMachine.combatSelectSlots)

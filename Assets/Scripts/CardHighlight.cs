@@ -24,6 +24,8 @@ public class CardHighlight : MonoBehaviour
 
     [SerializeField] GameObject highlightParticle;
 
+    bool forcedHighlight = false;
+
     private void Start()
     {
         oldScale = transform.localScale;
@@ -53,13 +55,20 @@ public class CardHighlight : MonoBehaviour
     private void OnMouseExit()
     {
         isSelected = false;
-        
+
+        if(forcedHighlight) return;
         highlightParticle.SetActive(false);
         foreach (DiceGameObject diceGameObject in cardItem.childDice)
         {
             diceGameObject.highlightEffect.SetActive(false);
         }
         
+    }
+
+    public void ForceHighlight(bool active)
+    {
+        highlightParticle.SetActive(active);
+        forcedHighlight = active;
     }
 
     private void Update()
