@@ -30,4 +30,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 114f1202e5730fe4eb638e5fad9f77d6, type: 3}
   textBox: In this turn, both players deal damage to themselves
   cooldown: 0
-  executionOrder: 0
+  executionOrder: 10

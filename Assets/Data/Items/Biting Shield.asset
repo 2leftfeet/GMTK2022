@@ -30,4 +30,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 509abbfb33466e441ac32373bd973519, type: 3}
   textBox: If you deal damage this turn, add your total shields to damage
   cooldown: 0
-  executionOrder: 0
+  executionOrder: 20

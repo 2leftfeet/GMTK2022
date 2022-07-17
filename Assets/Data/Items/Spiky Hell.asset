@@ -30,4 +30,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 38c02737be83f8c4fa58e403cc8d8170, type: 3}
   textBox: This turn, all your shield dice instead deal damage
   cooldown: 0
-  executionOrder: 0
+  executionOrder: 10

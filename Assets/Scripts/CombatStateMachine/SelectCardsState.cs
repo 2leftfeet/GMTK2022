@@ -26,7 +26,8 @@ public class SelectCardsState : BaseCombatState
 
         foreach(var card in randomCards)
         {
-            Debug.Log("chosen " + card.item.name);
+            //Debug.Log("chosen " + card.item.name);
+            card.GetComponent<CardHighlight>().ForceHighlight(true);
         }
         //also highlight the cards here
     }
