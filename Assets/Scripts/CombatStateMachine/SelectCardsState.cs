@@ -33,17 +33,22 @@ public class SelectCardsState : BaseCombatState
 
     void CardsConfirmed()
     {
+        int cardCount = 0;
         foreach(var slot in stateMachine.combatSelectSlots)
         {
-            //if any of the slots are empty return
-            if(slot.currentCard == null)
+            if(slot.currentCard != null)
             {
-                return;
+                cardCount++;
             } 
         }
 
+        //if no cards chosen, return
+        if(cardCount == 0) return;
+
         foreach(var slot in stateMachine.combatSelectSlots)
         {
+            if(slot.currentCard == null) continue;
+
             stateMachine.activeCards.Add(slot.currentCard);
 
             slot.currentCard.GetComponent<CardPosition>().GoBackToOldSlot();

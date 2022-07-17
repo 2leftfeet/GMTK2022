@@ -8,7 +8,7 @@ public class CombatStateMachine : MonoBehaviour
     BaseCombatState currentState;
 
 
-    public CombatAgentData TEMP_enemyToSpawn;
+    public EnemyDatabase enemyDatabase;
     public CombatAgentData playerData;
 
     public CardSlot[] playerCardSlots;
@@ -45,6 +45,9 @@ public class CombatStateMachine : MonoBehaviour
     public List<CardItem> activeCards = new List<CardItem>();
 
     public List<CardItem> enemyActiveCards = new List<CardItem>();
+
+    [HideInInspector]
+    public int currentRound = 0;
 
 
     void Start()
