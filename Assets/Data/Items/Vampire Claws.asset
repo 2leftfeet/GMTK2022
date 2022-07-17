@@ -27,7 +27,7 @@ MonoBehaviour:
   - type: 0
     value: 0
   diceCount: 6
-  image: {fileID: 0}
-  textBox: 
+  image: {fileID: 21300000, guid: ea8d59f09d541e44e83137b712fe9bc9, type: 3}
+  textBox: This turn, heal for the amount of damage you deal
   cooldown: 2
   executionOrder: 999
