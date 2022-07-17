@@ -48,9 +48,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Health_Amount: 24.6
+    - _Health_Amount: 0.48
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WobbleX: 0
+    - _WobbleZ: 0
     m_Colors:
     - _Fill_Color: {r: 0, g: 0.107791275, b: 0.31132078, a: 0}
     - _Top_Color: {r: 0, g: 0.37185535, b: 0.6698113, a: 0}
