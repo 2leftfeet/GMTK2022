@@ -42,6 +42,7 @@ public class CombatStateMachine : MonoBehaviour
     public TextMeshProUGUI enemyShield;
 
     public RewardTable rewardTable;
+    public MenuTable menuTable;
     
 
     public float diceGroupOffset;
@@ -181,6 +182,23 @@ public class CombatStateMachine : MonoBehaviour
 
         Destroy(enemyAgent);
         enemyAgent = null;
+    }
+
+    public void CleanupPlayer()
+    {
+        foreach(CardItem card in playerAgent.inventory)
+        {
+            Destroy(card.gameObject);
+        }
+
+        foreach(CardSlot slot in playerCardSlots)
+        {
+            slot.RemoveCard();
+        }
+
+
+        Destroy(playerAgent);
+        playerAgent = null;
     }
 
     public void CleanupRewards()

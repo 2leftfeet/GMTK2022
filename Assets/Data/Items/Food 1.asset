@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f25087baf496ab0488ab46efe800fdb3, type: 3}
-  m_Name: Simple Shield
+  m_Name: Food 1
   m_EditorClassIdentifier: 
-  itemName: Simple Shield
+  itemName: Ripe Apple
   diceSides:
-  - type: 2
+  - type: 4
+    value: 2
+  - type: 4
+    value: 2
+  - type: 4
     value: 1
-  - type: 2
+  - type: 4
     value: 1
-  - type: 2
-    value: 1
-  - type: 2
+  - type: 4
     value: 0
-  - type: 2
+  - type: 4
     value: 0
-  - type: 2
-    value: 0
-  diceCount: 4
-  image: {fileID: 21300000, guid: cae5536333459004f8b7c3662711133b, type: 3}
-  textBox: <i>Does not shield you from emotional damage</i>
+  diceCount: 2
+  image: {fileID: 21300000, guid: 67346ecddfb934cac9471107c59817aa, type: 3}
+  textBox: <i>Fresh out of a garden</i>
   cooldown: 0
   executionOrder: 0
