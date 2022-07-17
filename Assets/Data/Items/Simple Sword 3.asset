@@ -28,6 +28,6 @@ MonoBehaviour:
     value: 2
   diceCount: 4
   image: {fileID: 21300000, guid: ab44507a49b7a944ca515eaa40fe77f2, type: 3}
-  textBox: <i>Was found at childers playground</i>
+  textBox: <i>Dante wants it's sword back</i>
   cooldown: 0
   executionOrder: 0
