@@ -5,25 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Items/Shield Dice To Damage Dice Item", order = 3)]
 public class ShieldToDamageItem : BaseItem
 {
-    public override void ResolveItem(ref RoundEffects effects, List<DiceGameObject> diceList, CombatAgent owner)
+    public override void ResolveItem(ref RoundEffects ownerEffects, ref RoundEffects targetEffects, List<DiceGameObject> diceList, CombatAgent owner, CombatAgent target)
     {
-        base.ResolveItem(ref effects, diceList, owner);
+        base.ResolveItem(ref ownerEffects, ref targetEffects, diceList, owner, target);
 
-        effects.totalDamage += effects.totalShield;
-        effects.totalDamageMultiplier *= effects.totalShieldMultiplier;
+        ownerEffects.totalDamage += ownerEffects.totalShield;
+        ownerEffects.totalDamageMultiplier *= ownerEffects.totalShieldMultiplier;
 
-        effects.totalShield = 0;
-        effects.totalShieldMultiplier = 1;
+        ownerEffects.totalShield = 0;
+        ownerEffects.totalShieldMultiplier = 1;
     }    
-}
-
-[CreateAssetMenu(fileName = "Item", menuName = "Items/Shield Amount To Damage Item", order = 4)]
-public class AttackShieldItem : BaseItem
-{
-    public override void ResolveItem(ref RoundEffects effects, List<DiceGameObject> diceList, CombatAgent owner)
-    {
-        base.ResolveItem(ref effects, diceList, owner);
-
-        effects.unscaledDamage = owner.GetShield();
-    }
 }
