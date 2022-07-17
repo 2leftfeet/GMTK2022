@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   startingCards:
-  - {fileID: 11400000, guid: dc760e35a15a79141b67402d06e4e568, type: 2}
-  - {fileID: 11400000, guid: 5d79358c72870e74b8b02542e1dac8d9, type: 2}
-  - {fileID: 11400000, guid: aca0c2a243ab94554bf64726d2563fb6, type: 2}
-  - {fileID: 11400000, guid: a1d240dcb758d56449d1e82f74590cd0, type: 2}
+  - {fileID: 11400000, guid: 6f18265a1b7ae0744b4ad6f5f89b0ba4, type: 2}
+  - {fileID: 11400000, guid: 3a88d14ed91b24f85bf0dae6f3317761, type: 2}
+  - {fileID: 11400000, guid: 0befeacb45c934381ae4d9948eec7a5f, type: 2}
+  - {fileID: 11400000, guid: bb34bafc829e5004c95e95c3ac0f4b5e, type: 2}
   isEnemy: 1
   cardsPlayedPerTurn: 2
