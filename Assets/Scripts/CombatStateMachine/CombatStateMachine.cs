@@ -41,6 +41,8 @@ public class CombatStateMachine : MonoBehaviour
     public TextMeshProUGUI playerShield;
     public TextMeshProUGUI enemyShield;
 
+    public TextMeshProUGUI tutorialText;
+
     public RewardTable rewardTable;
     public MenuTable menuTable;
     

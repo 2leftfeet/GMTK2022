@@ -5623,6 +5623,7 @@ MonoBehaviour:
   enemyHealthVial: {fileID: 2010973996}
   playerShield: {fileID: 1423067078}
   enemyShield: {fileID: 1372012066}
+  tutorialText: {fileID: 0}
   rewardTable: {fileID: 2088413488}
   menuTable: {fileID: 498191359}
   diceGroupOffset: 0.15
@@ -6141,8 +6142,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4284602111
+  m_fontColor: {r: 1, g: 0.83935106, b: 0.3820755, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
